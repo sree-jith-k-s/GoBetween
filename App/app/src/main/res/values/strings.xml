@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Go Between</string>
+    <string name="add">+</string>
+    <string name="sub">-</string>
+    <string name="mult">*</string>
+    <string name="div">/</string>
+</resources>
