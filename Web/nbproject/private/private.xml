@@ -2,15 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/D:/MainProject/Web/BasicProject/web/Company/Viewrequest.jsp</file>
-            <file>file:/D:/MainProject/Web/BasicProject/web/Company/Userrequest.jsp</file>
-            <file>file:/D:/MainProject/Web/BasicProject/web/User/Requestcompany.jsp</file>
-            <file>file:/D:/MainProject/Web/BasicProject/web/Guest/Login.jsp</file>
-            <file>file:/D:/MainProject/Web/BasicProject/web/User/Searchcompany.jsp</file>
-            <file>file:/D:/MainProject/Web/BasicProject/web/User/Homepage.jsp</file>
-            <file>file:/D:/MainProject/Web/BasicProject/web/Driver/Viewcompany.jsp</file>
-            <file>file:/D:/MainProject/Web/BasicProject/web/Company/Homepage.jsp</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>

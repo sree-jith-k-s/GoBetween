@@ -82,7 +82,7 @@
                    <td><%=i%></td>
                    <td><%=rs.getString("state_name")%></td>
                    <td><%=rs.getString("district_name")%></td>
-                   <td><a href="Place.jsp?pid=<%=rs.getString("district_id")%>">Delete</a></td>
+                   <td><a href="District.jsp?did=<%=rs.getString("district_id")%>">Delete</a></td>
                 </tr> 
            <%     
             }

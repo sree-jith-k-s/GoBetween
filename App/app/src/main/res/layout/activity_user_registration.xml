@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    android:background="@drawable/login"
+    android:background="@drawable/login2"
     tools:context=".UserRegistration">
     <ScrollView
         android:layout_width="match_parent"
@@ -33,11 +33,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Signup"
-                android:id="@+id/loginText"
+                android:id="@+id/signtext"
                 android:textSize="36sp"
                 android:textAlignment="center"
                 android:textStyle="bold"
-                android:textColor="@color/purple"/>
+                android:textColor="@color/cyan_blue"/>
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
@@ -71,6 +71,7 @@
                 android:drawablePadding="8dp"
                 android:hint="Email"
                 android:padding="8dp"
+                android:inputType="textEmailAddress"
                 android:textColor="@color/black"
                 android:textColorHighlight="@color/cardview_dark_background"
                 android:layout_marginTop="40dp"/>
@@ -144,19 +145,20 @@
                 android:text="Signup"
                 android:textSize="18sp"
                 android:layout_marginTop="30dp"
-                android:backgroundTint="@color/purple"
+                android:backgroundTint="@color/blue"
                 app:cornerRadius="20dp"/>
         </LinearLayout>
     </androidx.cardview.widget.CardView>
     <TextView
+        android:id="@+id/logintext"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="8dp"
         android:text="Already Registered? Login Now"
         android:textSize="14sp"
         android:textAlignment="center"
-        android:id="@+id/signuptext"
-        android:textColor="@color/purple"
+        android:layout_marginStart="100dp"
+        android:textColor="@color/white"
         android:layout_marginBottom="20dp"/>
      </LinearLayout>
 
