@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class UserRegistration extends AppCompatActivity {
@@ -18,7 +19,7 @@ public class UserRegistration extends AppCompatActivity {
         logintext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i=new Intent(UserRegistration.this, Myprofile.class);
+                Intent i=new Intent(UserRegistration.this, Login.class);
                 startActivity(i);
             }
         });

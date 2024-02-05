@@ -264,7 +264,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:text="Password:"
-                                android:textColor="#182693"
+                                android:textColor="@color/black"
                                 android:textSize="18sp" />
 
                             <TextView
@@ -274,7 +274,7 @@
                                 android:layout_weight="1"
                                 android:text="Change"
                                 android:textAlignment="viewEnd"
-                                android:textColor="#5B5B5B"
+                                android:textColor="#182693"
                                 android:textSize="16sp" />
 
                         </LinearLayout>
@@ -301,7 +301,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:text="Mobile:"
-                                android:textColor="#182693"
+                                android:textColor="@color/black"
                                 android:textSize="18sp" />
 
                             <TextView
@@ -311,7 +311,7 @@
                                 android:layout_weight="1"
                                 android:text="+91 9740826104"
                                 android:textAlignment="viewEnd"
-                                android:textColor="#5B5B5B"
+                                android:textColor="#182693"
                                 android:textSize="16sp" />
 
                         </LinearLayout>
@@ -338,7 +338,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:text="Tel:"
-                                android:textColor="#182693"
+                                android:textColor="@color/black"
                                 android:textSize="18sp" />
 
                             <TextView
@@ -348,7 +348,7 @@
                                 android:layout_weight="1"
                                 android:text="0479 2435268"
                                 android:textAlignment="viewEnd"
-                                android:textColor="#5B5B5B"
+                                android:textColor="#182693"
                                 android:textSize="16sp" />
 
                         </LinearLayout>
@@ -375,7 +375,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:text="Address:"
-                                android:textColor="#182693"
+                                android:textColor="@color/black"
                                 android:textSize="18sp" />
 
                             <TextView
@@ -385,7 +385,7 @@
                                 android:layout_weight="1"
                                 android:text="NY-Street 21-no 34"
                                 android:textAlignment="viewEnd"
-                                android:textColor="#5B5B5B"
+                                android:textColor="#182693"
                                 android:textSize="16sp" />
 
                         </LinearLayout>
@@ -412,7 +412,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:text="Postal Code:"
-                                android:textColor="#182693"
+                                android:textColor="@color/black"
                                 android:textSize="18sp" />
 
                             <TextView
@@ -422,7 +422,7 @@
                                 android:layout_weight="1"
                                 android:text="689233"
                                 android:textAlignment="viewEnd"
-                                android:textColor="#5B5B5B"
+                                android:textColor="#182693"
                                 android:textSize="16sp" />
 
                         </LinearLayout>
