@@ -85,7 +85,6 @@
                 android:padding="8dp"
                 android:text="Not yet Registered? Signup Now"
                 android:textAlignment="center"
-                android:textColor="@color/purple_500"
                 android:textSize="14sp" />
 
         </LinearLayout>

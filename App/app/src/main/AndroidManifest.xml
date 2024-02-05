@@ -13,6 +13,12 @@
         android:theme="@style/Base.Theme.GoBetween"
         tools:targetApi="31">
         <activity
+            android:name=".MainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Searchcompany"
+            android:exported="false" />
+        <activity
             android:name=".Changepassword"
             android:exported="false" />
         <activity
@@ -45,6 +51,7 @@
         <activity
             android:name=".calculator"
             android:exported="false" />
+
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

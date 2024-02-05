@@ -100,18 +100,91 @@
                 android:textColor="@color/black"
                 android:textColorHighlight="@color/cardview_dark_background"
                 android:layout_marginTop="40dp"/>
-                <Spinner
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayout1"
+                android:layout_width="302dp"
+                android:layout_height="68dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="-20dp">
+
+                <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/state"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"/>
+                    android:layout_height="50dp"
+                    android:background="@drawable/custom_edittext"
+                    android:drawableEnd="@drawable/arrow_down_pacific_blue"
+                    android:drawablePadding="8dp"
+                    android:focusable="false"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:hint="State"
+                    android:inputType="none"
+                    android:padding="8dp" />
+            </com.google.android.material.textfield.TextInputLayout>
             <Spinner
-                android:id="@+id/district"
-                android:layout_width="match_parent"
-                android:layout_height="50dp" />
-             <Spinner
-                 android:id="@+id/location"
-                 android:layout_width="match_parent"
-                 android:layout_height="50dp"/>
+                android:id="@+id/spinner1"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="10dp"
+                android:background="@android:color/transparent"
+                android:spinnerMode="dialog" />
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayout2"
+                android:layout_width="302dp"
+                android:layout_height="68dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="-20dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/district"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@drawable/custom_edittext"
+                    android:drawableEnd="@drawable/arrow_down_pacific_blue"
+                    android:drawablePadding="8dp"
+                    android:focusable="false"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:hint="District"
+                    android:inputType="none"
+                    android:padding="8dp" />
+            </com.google.android.material.textfield.TextInputLayout>
+            <Spinner
+                android:id="@+id/spinner2"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="10dp"
+                android:background="@android:color/transparent"
+                android:spinnerMode="dialog" />
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayout3"
+                android:layout_width="302dp"
+                android:layout_height="68dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="-20dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/location"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@drawable/custom_edittext"
+                    android:drawableEnd="@drawable/arrow_down_pacific_blue"
+                    android:drawablePadding="8dp"
+                    android:focusable="false"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:hint="Location"
+                    android:inputType="none"
+                    android:padding="8dp" />
+            </com.google.android.material.textfield.TextInputLayout>
+            <Spinner
+                android:id="@+id/spinner3"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="10dp"
+                android:background="@android:color/transparent"
+                android:spinnerMode="dialog" />
             <EditText
                 android:layout_width="match_parent"
                 android:id="@+id/password"
@@ -124,7 +197,7 @@
                 android:inputType="textPassword"
                 android:textColor="@color/black"
                 android:textColorHighlight="@color/cardview_dark_background"
-                android:layout_marginTop="40dp"/>
+                android:layout_marginTop="20dp"/>
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
@@ -158,7 +231,6 @@
         android:textSize="14sp"
         android:textAlignment="center"
         android:layout_marginStart="100dp"
-        android:textColor="@color/white"
         android:layout_marginBottom="20dp"/>
      </LinearLayout>
 
