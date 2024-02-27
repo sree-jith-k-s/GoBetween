@@ -13,6 +13,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Go Between"
+rootProject.name = "GoBetween"
 include(":app")
  

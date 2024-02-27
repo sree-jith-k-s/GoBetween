@@ -16,7 +16,7 @@
 
 
     %>
-    <body align="center">
+    <body>
         <form method="post">
             <table align="center" border="1">
                 <tr>

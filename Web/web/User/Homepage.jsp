@@ -17,6 +17,7 @@
         <a href="Changepassword.jsp"><button>Change Password</button></a>
         <a href="Myprofile.jsp"><button>My profile</button></a>
          <a href="Searchcompany.jsp"><button>Search Company</button></a>
+         <a href="Viewrequest.jsp"><button>My Request</button></a>
         </div>
     </body>
 </html>

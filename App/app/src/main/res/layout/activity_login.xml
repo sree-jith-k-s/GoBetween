@@ -36,7 +36,7 @@
                 android:textStyle="bold" />
 
             <EditText
-                android:id="@+id/username"
+                android:id="@+id/email"
                 android:layout_width="300dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="40dp"
@@ -65,7 +65,7 @@
                 android:textColorHighlight="@color/cardview_dark_background" />
 
             <Button
-                android:id="@+id/loginbutton"
+                android:id="@+id/b1"
                 android:layout_width="300dp"
                 android:layout_height="60dp"
                 android:layout_gravity="center"

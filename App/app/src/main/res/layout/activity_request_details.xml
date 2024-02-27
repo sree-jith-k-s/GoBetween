@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/detailName"
         android:layout_marginTop="14dp"
-        android:text="Request"
+        android:text="Request Details"
         android:textSize="24sp"
         android:textColor="@color/lavender"
         android:textStyle="bold"
@@ -21,7 +21,7 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardImage"
-        android:layout_width="380dp"
+        android:layout_width="302dp"
         android:layout_height="190dp"
         android:layout_gravity="center"
         android:layout_marginTop="10dp"

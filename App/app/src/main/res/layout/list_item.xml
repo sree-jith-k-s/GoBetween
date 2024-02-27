@@ -30,7 +30,7 @@
             android:id="@+id/listName"
             android:layout_width="161dp"
             android:layout_height="55dp"
-            android:layout_marginStart="30dp"
+            android:layout_marginStart="33dp"
             android:layout_marginTop="30dp"
             android:layout_toEndOf="@id/listImage"
             android:text="Company Name"

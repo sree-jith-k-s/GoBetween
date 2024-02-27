@@ -1,7 +1,6 @@
 package com.example.gobetween;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 
 public class MyRequest extends AppCompatActivity {
