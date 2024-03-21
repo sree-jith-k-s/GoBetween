@@ -19,6 +19,7 @@ import org.json.JSONObject;
 public class Login extends AppCompatActivity {
     Button b1;
     EditText email,password;
+    TextView signuptext;
     String Email,Password,id,name;
 
     @Override
@@ -29,6 +30,14 @@ public class Login extends AppCompatActivity {
         b1 = findViewById(R.id.b1);
         email = findViewById(R.id.email);
         password = findViewById(R.id.password);
+        signuptext = findViewById(R.id.signuptext);
+        signuptext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(Login.this,UserRegistration.class);
+                startActivity(i);
+            }
+        });
 
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -41,6 +50,14 @@ public class Login extends AppCompatActivity {
 
             }
         });
+    }
+    public void onBackPressed() {
+        Intent intent = new Intent(Login.this, Login.class);
+        startActivity(intent);
+//        Toast.makeText(Login.this, "Logout to exit", Toast.LENGTH_SHORT).show();
+        // Disable back button functionality
+        // Or you can leave this empty to do nothing when back button is pressed
+        super.onBackPressed();
     }
 
     public class LoginDetails extends AsyncTask<String, String, String> {

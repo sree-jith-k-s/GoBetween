@@ -2,7 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/card1"
@@ -24,10 +24,10 @@
             android:layout_gravity="center">
 
             <TextView
-                android:id="@+id/cname"
+                android:id="@+id/companyname"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/image1"
+                android:layout_below="@+id/logo"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/poppins_semibold"
@@ -36,12 +36,14 @@
                 android:textColor="@color/lavender"
                 android:textSize="20sp" />
 
-            <ImageView
-                android:id="@+id/image1"
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/logo"
                 android:layout_width="70dp"
                 android:layout_height="70dp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="15dp"
+                app:shapeAppearanceOverlay="@style/circle"
+                style="@style/roundedImageViewRounded"
                 android:src="@drawable/company" />
         </RelativeLayout>
     </androidx.cardview.widget.CardView>

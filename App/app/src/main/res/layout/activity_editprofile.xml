@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Editprofile">
+    tools:context=".Myprofile">
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -21,7 +21,7 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#FFFFFF">
+                >
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/constraintLayout2"
@@ -42,86 +42,74 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent">
 
+                        <ImageView
+                            android:id="@+id/arrow"
+                            android:layout_width="44dp"
+                            android:layout_height="46dp"
+                            android:layout_gravity="start|center_vertical|center"
+                            android:paddingBottom="20dp"
+                            android:src="@drawable/baseline_arrow_back_24"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.002"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="@+id/imageView1"
+                            app:layout_constraintVertical_bias="0.047" />
+
                         <TextView
-                            android:id="@+id/textView"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="-5dp"
                             android:text="Edit Profile"
                             android:textAlignment="center"
+                            android:layout_marginTop="-100dp"
                             android:textColor="#FFFFFF"
                             android:textSize="20sp"
                             android:textStyle="bold"
-                            app:layout_constraintBottom_toTopOf="@+id/imageView2"
+                            app:layout_constraintBottom_toBottomOf="@+id/imageView1"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="@+id/imageView1" />
 
                         <ImageView
                             android:id="@+id/imageView1"
-                            android:layout_width="431dp"
-                            android:layout_height="320dp"
+                            android:layout_width="407dp"
+                            android:layout_height="331dp"
                             android:scaleType="centerCrop"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintHorizontal_bias="1.0"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintVertical_bias="0.086"
+                            app:layout_constraintVertical_bias="0.0"
                             app:srcCompat="@drawable/circles"
                             tools:layout_constraintEnd_toEndOf="parent" />
-
-                        <TextView
-                            android:id="@+id/textView1"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="1dp"
-                            android:text="change"
-                            android:textAlignment="center"
-                            android:textColor="@color/white"
-                            android:textSize="14sp"
-                            android:textStyle="normal"
-                            app:layout_constraintEnd_toEndOf="@+id/imageView2"
-                            app:layout_constraintHorizontal_bias="0.55"
-                            app:layout_constraintStart_toStartOf="@+id/imageView2"
-                            app:layout_constraintTop_toBottomOf="@+id/imageView2" />
-
-                        <ImageView
-                            android:id="@+id/imageView2"
-                            android:layout_width="122dp"
-                            android:layout_height="128dp"
-                            android:layout_marginTop="72dp"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:srcCompat="@drawable/profile" />
-
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
-                    <LinearLayout
+                    <androidx.cardview.widget.CardView
                         android:id="@+id/linearLayout3"
-                        android:layout_width="363dp"
-                        android:layout_height="465dp"
+                        android:layout_width="356dp"
+                        android:layout_height="390dp"
                         android:layout_marginStart="24dp"
                         android:layout_marginTop="-250dp"
                         android:layout_marginEnd="24dp"
                         android:layout_marginBottom="10dp"
-                        android:background="@drawable/white_background"
+                        app:cardCornerRadius="20dp"
                         android:elevation="3dp"
                         android:orientation="vertical"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintHorizontal_bias="1.0"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/constraintLayout"
+                        app:layout_constraintVertical_bias="0.279"
                         tools:layout_constraintStart_toEndOf="parent">
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_margin="10dp"
+                            android:paddingTop="20dp"
                             android:layout_marginStart="10dp"
-                            android:layout_marginTop="24dp"
+                            android:layout_marginTop="18dp"
                             android:layout_marginEnd="10dp"
                             android:layout_marginBottom="10dp"
                             android:orientation="horizontal">
@@ -136,13 +124,12 @@
                                 android:textSize="18sp" />
 
                             <EditText
-                                android:id="@+id/textView21"
+                                android:id="@+id/name"
                                 android:layout_width="144dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:text="Edward"
-                                android:textAlignment="viewStart"
-                                android:textColor="#5B5B5B"
+                                android:text="edward"
+                                android:textAlignment="center"
                                 android:textSize="16sp" />
 
                         </LinearLayout>
@@ -152,7 +139,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="1dp"
                             android:layout_marginStart="10dp"
-                            android:layout_marginTop="6dp"
+                            android:layout_marginTop="80dp"
                             android:layout_marginEnd="10dp"
                             android:layout_marginBottom="6dp"
                             android:background="#D9D9D9" />
@@ -160,7 +147,9 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_margin="10dp"
+                            android:layout_marginTop="90dp"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginEnd="10dp"
                             android:orientation="horizontal">
 
                             <TextView
@@ -169,17 +158,17 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:text="Email:"
+
                                 android:textColor="#182693"
                                 android:textSize="18sp" />
 
                             <EditText
-                                android:id="@+id/textView30"
+                                android:id="@+id/email"
                                 android:layout_width="148dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:text="edward@gmail.com"
-                                android:textAlignment="viewStart"
-                                android:textColor="#5B5B5B"
+                                android:textAlignment="center"
                                 android:textSize="16sp" />
 
                         </LinearLayout>
@@ -187,9 +176,9 @@
                         <View
                             android:id="@+id/view5"
                             android:layout_width="match_parent"
-                            android:layout_height="1dp"
+                            android:layout_height="2dp"
                             android:layout_marginStart="10dp"
-                            android:layout_marginTop="6dp"
+                            android:layout_marginTop="130dp"
                             android:layout_marginEnd="10dp"
                             android:layout_marginBottom="6dp"
                             android:background="#D9D9D9" />
@@ -197,7 +186,9 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_margin="10dp"
+                            android:layout_marginTop="140dp"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginEnd="10dp"
                             android:orientation="horizontal">
 
                             <TextView
@@ -210,13 +201,12 @@
                                 android:textSize="18sp" />
 
                             <EditText
-                                android:id="@+id/textView23"
+                                android:id="@+id/contact"
                                 android:layout_width="148dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:text="+91 9740826104"
-                                android:textAlignment="viewStart"
-                                android:textColor="#5B5B5B"
+                                android:textAlignment="center"
                                 android:textSize="16sp" />
 
                         </LinearLayout>
@@ -224,58 +214,23 @@
                         <View
                             android:id="@+id/view2"
                             android:layout_width="match_parent"
-                            android:layout_height="1dp"
+                            android:layout_height="2dp"
                             android:layout_marginStart="10dp"
-                            android:layout_marginTop="6dp"
+                            android:layout_marginTop="180dp"
                             android:layout_marginEnd="10dp"
                             android:layout_marginBottom="6dp"
-                            android:background="#D9D9D9" />
+                            android:background="#D9D9D9"/>
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_margin="10dp"
+                            android:layout_marginTop="200dp"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginEnd="10dp"
                             android:orientation="horizontal">
 
                             <TextView
                                 android:id="@+id/textView24"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="Tel:"
-                                android:textColor="#182693"
-                                android:textSize="18sp" />
-
-                            <EditText
-                                android:id="@+id/textView25"
-                                android:layout_width="122dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="0479 2435268"
-                                android:textAlignment="viewStart"
-                                android:textColor="#5B5B5B"
-                                android:textSize="16sp" />
-
-                        </LinearLayout>
-
-                        <View
-                            android:id="@+id/view3"
-                            android:layout_width="match_parent"
-                            android:layout_height="1dp"
-                            android:layout_marginStart="10dp"
-                            android:layout_marginTop="6dp"
-                            android:layout_marginEnd="10dp"
-                            android:layout_marginBottom="6dp"
-                            android:background="#D9D9D9" />
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="10dp"
-                            android:orientation="horizontal">
-
-                            <TextView
-                                android:id="@+id/textView26"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
@@ -284,13 +239,50 @@
                                 android:textSize="18sp" />
 
                             <EditText
-                                android:id="@+id/textView27"
-                                android:layout_width="169dp"
+                                android:id="@+id/address"
+                                android:layout_width="122dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:text="NY-Street 21-no 34"
-                                android:textAlignment="viewStart"
-                                android:textColor="#5B5B5B"
+                                android:textAlignment="center"
+                                android:textSize="16sp" />
+
+                        </LinearLayout>
+
+                        <View
+                            android:id="@+id/view3"
+                            android:layout_width="match_parent"
+                            android:layout_height="2dp"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="240dp"
+                            android:layout_marginEnd="10dp"
+                            android:layout_marginBottom="6dp"
+                            android:background="#D9D9D9" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="260dp"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginEnd="10dp"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/textView26"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Aadhar No:"
+                                android:textColor="#182693"
+                                android:textSize="18sp" />
+
+                            <EditText
+                                android:id="@+id/aadhar"
+                                android:layout_width="169dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="1234567890"
+                                android:textAlignment="center"
                                 android:textSize="16sp" />
 
                         </LinearLayout>
@@ -300,39 +292,78 @@
                             android:layout_width="match_parent"
                             android:layout_height="1dp"
                             android:layout_marginStart="10dp"
-                            android:layout_marginTop="6dp"
+                            android:layout_marginTop="300dp"
+                            android:layout_marginEnd="10dp"
+                            android:layout_marginBottom="6dp"
+                            android:background="#D9D9D9" />
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginTop="320dp">
+
+                            <TextView
+                                android:id="@+id/textview10"
+                                android:layout_width="56dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:paddingStart="8dp"
+                                android:text="Date of Birth:"
+                                android:textColor="#182693"
+                                android:textSize="18sp" />
+                            <!-- Day -->
+                            <EditText
+                                android:id="@+id/day"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:hint="DD"
+                                android:inputType="number"
+                                android:maxLength="2"
+                                android:maxLines="1"
+                                android:padding="8dp"
+                                android:textAlignment="center"
+                                android:textSize="16sp" />
+
+                            <!-- Month -->
+                            <EditText
+                                android:id="@+id/month"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:hint="MM"
+                                android:inputType="number"
+                                android:maxLength="2"
+                                android:maxLines="1"
+                                android:padding="8dp"
+                                android:textAlignment="center"
+                                android:textSize="16sp" />
+
+                            <!-- Year -->
+                            <EditText
+                                android:id="@+id/year"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:hint="YYYY"
+                                android:inputType="number"
+                                android:maxLength="4"
+                                android:maxLines="1"
+                                android:padding="8dp"
+                                android:textAlignment="center"
+                                android:textSize="16sp" />
+                        </LinearLayout>
+                        <View
+                            android:id="@+id/view6"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="360dp"
                             android:layout_marginEnd="10dp"
                             android:layout_marginBottom="6dp"
                             android:background="#D9D9D9" />
 
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="10dp"
-                            android:orientation="horizontal">
-
-                            <TextView
-                                android:id="@+id/textView28"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="Postal Code:"
-                                android:textColor="#182693"
-                                android:textSize="18sp" />
-
-                            <EditText
-                                android:id="@+id/textView29"
-                                android:layout_width="202dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="689233"
-                                android:textAlignment="viewStart"
-                                android:textColor="#5B5B5B"
-                                android:textSize="16sp" />
-
-                        </LinearLayout>
-
-                    </LinearLayout>
+                    </androidx.cardview.widget.CardView>
 
                     <Button
                         android:id="@+id/button1"

@@ -176,7 +176,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/text4"
-                        android:text="Complaint"
+                        android:text="Track Order"
                         android:textSize="20sp"
                         android:textColor="@color/lavender"
                         android:fontFamily="@font/poppins_semibold"
@@ -187,7 +187,7 @@
                         android:layout_width="70dp"
                         android:layout_height="70dp"
                         android:id="@+id/image4"
-                        android:src="@drawable/complaint"
+                        android:src="@drawable/track"
                         android:layout_marginTop="15dp"
                         android:layout_centerHorizontal="true"/>
                 </RelativeLayout>
@@ -219,7 +219,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/text5"
-                        android:text="Feedback"
+                        android:text="Settings"
                         android:textSize="20sp"
                         android:textColor="@color/lavender"
                         android:fontFamily="@font/poppins_semibold"
@@ -233,7 +233,7 @@
                         android:layout_height="70dp"
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="15dp"
-                        android:src="@drawable/feedback"/>
+                        android:src="@drawable/settings2"/>
                 </RelativeLayout>
             </androidx.cardview.widget.CardView>
             <androidx.cardview.widget.CardView
@@ -251,7 +251,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/text6"
-                        android:text="Logout"
+                        android:text="Complaint"
                         android:textSize="20sp"
                         android:textColor="@color/lavender"
                         android:fontFamily="@font/poppins_semibold"
@@ -262,7 +262,7 @@
                         android:layout_width="70dp"
                         android:layout_height="70dp"
                         android:id="@+id/image6"
-                        android:src="@drawable/logout"
+                        android:src="@drawable/complaint"
                         android:layout_marginTop="15dp"
                         android:layout_centerHorizontal="true"/>
                 </RelativeLayout>

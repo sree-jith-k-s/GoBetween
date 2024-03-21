@@ -16,6 +16,24 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".Payment"
+            android:exported="false" />
+        <activity
+            android:name=".EnquiryForm"
+            android:exported="false" />
+        <activity
+            android:name=".AddComplaint"
+            android:exported="false" />
+        <activity
+            android:name=".Settings"
+            android:exported="false" />
+        <activity
+            android:name=".Feedback"
+            android:exported="false" />
+        <activity
+            android:name=".CompanyDetails"
+            android:exported="false" />
+        <activity
             android:name=".ViewComplaint"
             android:exported="false" />
         <activity

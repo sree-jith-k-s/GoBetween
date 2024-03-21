@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,7 +19,8 @@ import org.json.JSONObject;
 
 public class Myprofile extends AppCompatActivity {
         Button button1;
-        TextView name,pchange,contact,email,address,aadhar;
+        TextView name,pchange,contact,email,address,aadhar,dob;
+    ImageView backto;
 
         String id;
     @Override
@@ -32,6 +34,22 @@ public class Myprofile extends AppCompatActivity {
         email = findViewById(R.id.email);
         address = findViewById(R.id.address);
         aadhar = findViewById(R.id.aadhar);
+        dob=findViewById(R.id.dob);
+        backto = findViewById(R.id.arrow);
+        backto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i=new Intent(Myprofile.this, Dashboard .class);
+                startActivity(i);
+            }
+        });
+        button1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(Myprofile.this,Editprofile.class);
+                startActivity(i);
+            }
+        });
         pchange.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -77,12 +95,14 @@ public class Myprofile extends AppCompatActivity {
                         String Phone= jo.getString("contact");
                         String Aadhar= jo.getString("aadhar");
                         String Address= jo.getString("address");
+                        String DOB= jo.getString("dob");
 
                         name.setText(Name);
                         email.setText(Email);
                         contact.setText(Phone);
                         aadhar.setText(Aadhar);
                         address.setText(Address);
+                        dob.setText(DOB);
 
 
                     } catch (JSONException e) {

@@ -11,7 +11,9 @@
     <color name="blue">#5fc7e0</color>
     <color name="cyan_blue">#0583c6</color>
     <color name="lavender">#8692f7</color>
-    <color name="pacific_blue">#1A6EB6</color>
-
+    <color name="pacific_blue">#1A6EB6</color>7ed321
+    <color name="green">#7FD620</color>
+    <color name="grey">#DFE4E4E4</color>
+    <color name="buttongreen">#AFF662</color>
 
 </resources>

@@ -1,17 +1,18 @@
 package com.example.gobetween;
 
+import static com.example.gobetween.WebServiceCaller.ip;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -20,7 +21,7 @@ import org.json.JSONObject;
 public class CompanyDetails extends AppCompatActivity {
     Button button1;
     TextView name,contact,email,address,location,since;
-    ImageView backto;
+    ImageView backto,logo;
 
     String id;
     @Override
@@ -34,18 +35,20 @@ public class CompanyDetails extends AppCompatActivity {
         email = findViewById(R.id.email);
         address = findViewById(R.id.address);
         since=findViewById(R.id.since);
+        logo = findViewById(R.id.logo);
 //        backto = findViewById(R.id.arrow);
-        backto.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i=new Intent(ComplaintDetails.this, Searchcompany .class);
-                startActivity(i);
-            }
-        });
+//        backto.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent i=new Intent(CompanyDetails.this, Searchcompany .class);
+//                startActivity(i);
+//            }
+//        });
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(ComplaintDetails.this,EnquiryForm.class);
+                Intent i = new Intent(CompanyDetails.this,EnquiryForm.class);
+                i.putExtra("id", id);
                 startActivity(i);
             }
         });
@@ -55,11 +58,6 @@ public class CompanyDetails extends AppCompatActivity {
         sp.execute(id);
 
     }
-    //    public boolean onOptionsItemSelected(MenuItem item) {
-//        Intent myIntent = new Intent(getApplicationContext(), Myprofile.class);
-//        startActivityForResult(myIntent, 0);
-//        return true;
-//    }
     public class Companydetails extends AsyncTask<String, String, String> {
 
         @Override
@@ -87,6 +85,8 @@ public class CompanyDetails extends AppCompatActivity {
                 String Location= jo.getString("location");
                 String Address= jo.getString("address");
                 String Since= jo.getString("since");
+                String Logo= jo.getString("logo");
+                String Logourl= jo.getString("logourl");
 
                 name.setText(Name);
                 email.setText(Email);
@@ -94,6 +94,7 @@ public class CompanyDetails extends AppCompatActivity {
                 location.setText(Location);
                 address.setText(Address);
                 since.setText(Since);
+                Picasso.get().load("http://"+ip+Logourl+Logo).into(logo);
 
 
             } catch (JSONException e) {
