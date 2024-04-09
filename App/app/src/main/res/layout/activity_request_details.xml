@@ -19,7 +19,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/detailName"
-        android:text="Company Details"
+        android:text="Request Details"
         android:layout_marginTop="-45dp"
         android:textSize="24sp"
         android:textStyle="bold"
@@ -28,7 +28,7 @@
 
 
     <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/logo"
+        android:id="@+id/companyImage"
         android:layout_width="120dp"
         android:layout_height="120dp"
         android:layout_gravity="center"
@@ -38,7 +38,7 @@
         android:src="@drawable/company" />
 
     <TextView
-        android:id="@+id/companyname"
+        android:id="@+id/companyName"
         android:layout_width="match_parent"
         android:layout_height="51dp"
         android:layout_marginTop="5dp"
@@ -49,16 +49,16 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/linearLayout3"
         android:layout_width="match_parent"
-        android:layout_height="383dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="24dp"
-        app:cardCornerRadius="20dp"
-        app:cardElevation="8dp"
         android:layout_marginBottom="10dp"
         android:background="@drawable/white_background"
         android:elevation="3dp"
         android:orientation="vertical"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -82,18 +82,18 @@
                 android:id="@+id/textView20"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:layout_marginTop="-5dp"
-                android:text="Contact:"
+                android:layout_weight="1"
+                android:text="Pickup Date:"
                 android:textColor="@color/lavender"
                 android:textSize="18sp" />
 
             <TextView
-                android:id="@+id/contact"
+                android:id="@+id/pickupDate"
                 android:layout_width="144dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:layout_marginTop="-5dp"
+                android:layout_weight="1"
                 android:text="12345678"
                 android:textAlignment="center"
                 android:textSize="16sp" />
@@ -120,19 +120,19 @@
                 android:id="@+id/textView31"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:layout_marginTop="80dp"
-                android:text="Email:"
+                android:layout_weight="1"
+                android:text="Pickup Location:"
                 android:textColor="@color/lavender"
                 android:textSize="18sp" />
 
             <TextView
-                android:id="@+id/email"
+                android:id="@+id/pickupLocation"
                 android:layout_width="148dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:layout_marginTop="80dp"
-                android:text="company@gmail.com"
+                android:layout_weight="1"
+                android:text="kl"
                 android:textAlignment="center"
                 android:textSize="16sp" />
 
@@ -158,19 +158,19 @@
                 android:id="@+id/textView22"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:layout_marginTop="140dp"
-                android:text="Address:"
+                android:layout_weight="1"
+                android:text="Details:"
                 android:textColor="@color/lavender"
                 android:textSize="18sp" />
 
             <TextView
-                android:id="@+id/address"
+                android:id="@+id/description"
                 android:layout_width="148dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:layout_marginTop="140dp"
                 android:layout_marginBottom="5dp"
+                android:layout_weight="1"
                 android:text="NY-Street 21-no 34"
                 android:textAlignment="center"
                 android:textSize="16sp" />
@@ -197,18 +197,18 @@
                 android:id="@+id/textView24"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:layout_marginTop="200dp"
-                android:text="Since:"
+                android:layout_weight="1"
+                android:text="Delivery Address:"
                 android:textColor="@color/lavender"
                 android:textSize="18sp" />
 
             <TextView
-                android:id="@+id/since"
+                android:id="@+id/deliveryAddress"
                 android:layout_width="122dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:layout_marginTop="200dp"
+                android:layout_weight="1"
                 android:text="1999-02-09"
                 android:textAlignment="center"
                 android:textSize="16sp" />
@@ -235,19 +235,19 @@
                 android:id="@+id/textView26"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:layout_marginTop="260dp"
-                android:text="Location:"
+                android:layout_weight="1"
+                android:text="Status:"
                 android:textColor="@color/lavender"
                 android:textSize="18sp" />
 
             <TextView
-                android:id="@+id/location"
+                android:id="@+id/status"
                 android:layout_width="169dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:layout_marginTop="260dp"
-                android:text="thiruvalla"
+                android:layout_weight="1"
+                android:text="Out for Delivery"
                 android:textAlignment="center"
                 android:textSize="16sp" />
 
@@ -260,29 +260,38 @@
             android:layout_marginStart="10dp"
             android:layout_marginTop="300dp"
             android:layout_marginEnd="10dp"
-            android:layout_marginBottom="6dp"
+            android:layout_marginBottom="20dp"
+            android:paddingBottom="10dp"
             android:background="#D9D9D9" />
 
-        <View
-            android:id="@+id/view6"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop= "375dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginBottom="6dp"
-            android:background="#D9D9D9" />
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp">
+            android:layout_margin="10dp"
+            android:orientation="horizontal">
+
             <Button
-                android:id="@+id/b1"
+                android:id="@+id/buttonPay"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="305dp"
                 android:background="@drawable/background_button1"
-                android:text="Enquiry Form" />
+                android:text="Pay" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/buttonTrack"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="305dp"
+                android:background="@drawable/background_button1"
+                android:text="Track" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 </LinearLayout>

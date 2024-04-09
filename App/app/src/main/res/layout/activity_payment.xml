@@ -66,7 +66,7 @@
                 android:paddingStart="3dp" />
 
             <EditText
-                android:id="@+id/nick_name"
+                android:id="@+id/last_name"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_gravity="end"
@@ -77,7 +77,7 @@
                 android:drawableLeft="@drawable/baseline_person_24"
                 android:drawablePadding="8dp"
                 android:fontFamily="@font/poppins_semibold"
-                android:hint="Nick Name"
+                android:hint="Last Name"
                 android:inputType="text"
                 android:paddingStart="3dp" />
         </LinearLayout>
@@ -204,7 +204,7 @@
                     android:layout_width="172dp"
                     android:layout_height="60dp"
                     android:layout_gravity="end"
-                    android:layout_marginStart="15dp"
+                    android:layout_marginStart="10dp"
                     android:orientation="horizontal"
                     android:padding="10dp">
 

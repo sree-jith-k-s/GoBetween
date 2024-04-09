@@ -7,10 +7,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
@@ -19,39 +21,29 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class RequestDetails extends AppCompatActivity {
-    Button button1;
-    TextView name,contact,email,address,location,since;
-    ImageView backto,logo;
 
-    String id;
+    String id,sheduleStatus,requestStatus;
+
+    TextView companyName,pickupLocation,pickupDate,description,deliveryAddress,status;
+
+    ImageView companyImage;
+    Button buttonPay,buttonTrack;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_request_details);
-        button1 = findViewById(R.id.b1);
-        name = findViewById(R.id.companyname);
-        location = findViewById(R.id.location);
-        contact = findViewById(R.id.contact);
-        email = findViewById(R.id.email);
-        address = findViewById(R.id.address);
-        since=findViewById(R.id.since);
-        logo = findViewById(R.id.logo);
-//        backto = findViewById(R.id.arrow);
-//        backto.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent i=new Intent(CompanyDetails.this, Searchcompany .class);
-//                startActivity(i);
-//            }
-//        });
-//        button1.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent i = new Intent(RequestDetails.this,EnquiryForm.class);
-//                i.putExtra("id", id);
-//                startActivity(i);
-//            }
-//        });
+
+        companyName = findViewById(R.id.companyName);
+        pickupLocation = findViewById(R.id.pickupLocation);
+        pickupDate = findViewById(R.id.pickupDate);
+        description = findViewById(R.id.description);
+        deliveryAddress = findViewById(R.id.deliveryAddress);
+        status = findViewById(R.id.status);
+        companyImage = findViewById(R.id.companyImage);
+        buttonPay = findViewById(R.id.buttonPay);
+        buttonTrack = findViewById(R.id.buttonTrack);
+
+
         Intent intent = getIntent();
         id = intent.getStringExtra("id");
         Companydetails sp = new Companydetails();
@@ -63,7 +55,7 @@ public class RequestDetails extends AppCompatActivity {
         @Override
         protected String doInBackground(String... strings) {
             WebServiceCaller wb = new WebServiceCaller();
-            wb.setSoapObject("CompanyDetails");
+            wb.setSoapObject("RequestDetails");
             wb.addProperty("id", strings[0]);
             wb.callWebService();
             return wb.getResponse();
@@ -72,35 +64,84 @@ public class RequestDetails extends AppCompatActivity {
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
-//                Toast.makeText(Myprofile.this,s,Toast.LENGTH_SHORT).show();
 
-//                if (!s.equals("[]")) {
             JSONArray j = null;
             try {
                 j = new JSONArray(s);
                 JSONObject jo = j.getJSONObject(0);
-                String Name= jo.getString("name");
-                String Email = jo.getString("email");
-                String Phone= jo.getString("contact");
-                String Location= jo.getString("location");
-                String Address= jo.getString("address");
-                String Since= jo.getString("since");
-                String Logo= jo.getString("logo");
-                String Logourl= jo.getString("logourl");
+                companyName.setText(jo.getString("companyName"));
+                pickupLocation.setText(jo.getString("pickupLocation"));
+                pickupDate.setText(jo.getString("pickupDate"));
+                description.setText(jo.getString("description"));
+                deliveryAddress.setText(jo.getString("deliveryAddress"));
+                requestStatus=jo.getString("status");
+                sheduleStatus=jo.getString("sheduleStatus");
+                Picasso.get().load("http://"+ip+jo.getString("companyImage")).into(companyImage);
+                int statusInt = Integer.parseInt(requestStatus);
+                int shedulestatusInt = Integer.parseInt(sheduleStatus);
+                if (statusInt==3)
+                {
+                    if(shedulestatusInt==0)
+                    {
+                        status.setText("Pay 25% Amount");
+                        buttonPay.setVisibility(View.VISIBLE);
+                        buttonTrack.setVisibility(View.GONE);
+                    }
+                    else if(shedulestatusInt==2)
+                    {
+                        buttonPay.setVisibility(View.GONE);
+                        buttonTrack.setVisibility(View.GONE);
+                        status.setText("Processing...");
+                    }
+                    else if (shedulestatusInt==3)
+                    {
+                        status.setText("Not Yet Started...");
+                        buttonTrack.setVisibility(View.GONE);
+                        buttonPay.setVisibility(View.GONE);
+                    }
+                    else if (shedulestatusInt==4)
+                    {
+                        status.setText("Out For Delivery");
+                        buttonTrack.setVisibility(View.VISIBLE);
+                        buttonPay.setVisibility(View.GONE);
+                    }
+                    else if (shedulestatusInt==5)
+                    {
+                        status.setText("Pay the Balance Amount");
+                        buttonTrack.setVisibility(View.GONE);
+                        buttonPay.setVisibility(View.VISIBLE);
 
-                name.setText(Name);
-                email.setText(Email);
-                contact.setText(Phone);
-                location.setText(Location);
-                address.setText(Address);
-                since.setText(Since);
-                Picasso.get().load("http://"+ip+Logourl+Logo).into(logo);
+                    }
+                    else if (shedulestatusInt==5)
+                    {
+                        status.setText("Delivered");
+                        buttonTrack.setVisibility(View.GONE);
+                        buttonPay.setVisibility(View.GONE);
 
+                    }
+                }
+                else if(statusInt==2)
+                {
+                    status.setText("Rejected");
+                    buttonTrack.setVisibility(View.GONE);
+                    buttonPay.setVisibility(View.GONE);
+                }
+                else if(statusInt==1)
+                {
+                    status.setText("Vehicle Not Assigned");
+                    buttonTrack.setVisibility(View.GONE);
+                    buttonPay.setVisibility(View.GONE);
+                }
+                else if(statusInt==0)
+                {
+                    status.setText("Pending");
+                    buttonTrack.setVisibility(View.GONE);
+                    buttonPay.setVisibility(View.GONE);
+                }
 
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-//                }
         }
     }
 }

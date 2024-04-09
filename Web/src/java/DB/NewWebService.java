@@ -198,16 +198,6 @@ public class NewWebService {
         System.out.println(j.toString());
         return j.toString();
     }
-
-    /**
-     * Web service operation
-     */
-    @WebMethod(operationName = "GetRequest")
-    public String GetRequest(@WebParam(name = "id") String id) {
-        //TODO write your implementation code here:
-        return null;
-    }
-
     /**
      * Web service operation
      */
@@ -260,9 +250,23 @@ public class NewWebService {
                 JSONObject jo = new JSONObject();
                 {
                     try {
+//                        String a=rs.getString("transport_request_status");
+                        if(rs.getString("transport_request_status").equals("1") || rs.getString("transport_request_status").equals("3"))
+                        {
+                           jo.put("time","Accepted");
+                           
+                        }
+                        else if(rs.getString("transport_request_status").equals("2"))
+                        {
+                           jo.put("time","Rejected"); 
+                        }
+                        else if(rs.getString("transport_request_status").equals("0"))
+                        {
+                           jo.put("time","Pending");          
+                        }
                         jo.put("company", rs.getString("company_name"));
                         jo.put("logo", rs.getString("company_logo"));
-                        jo.put("time", rs.getString("transport_request_time"));
+                        jo.put("id", rs.getString("transport_request_id"));
                         jo.put("logourl", url_of_logo);
                         j.put(jo);
                     } catch (JSONException ex) {
@@ -551,6 +555,51 @@ public class NewWebService {
         return j.toString();
     }
 
+    
+    /**
+     * Web service operation
+     */
+    @WebMethod(operationName = "RequestDetails")
+    public String RequestDetails(@WebParam(name = "id") String id) {
+        String sel = "select * from tbl_transport_request r inner join tbl_company c on c.company_id=r.company_id inner join tbl_location l on l.location_id=r.from_location_id where r.transport_request_id='" + id + "'";
+        ResultSet rs = con.selectCommand(sel);
+        System.out.println(sel);
+        JSONArray j = new JSONArray();
+        String sheduleStatus = "0";
+        try {
+            while (rs.next()) {
+                String selQry = "select * from tbl_transport_shedule where transport_request_id='"+id+"'";
+                ResultSet rsData = con.selectCommand(selQry);
+                if(rsData.next())
+                {
+                    sheduleStatus = rsData.getString("transport_shedule_status");
+                }
+                JSONObject jo = new JSONObject();
+                {
+                    try {
+                        jo.put("companyName", rs.getString("company_name"));
+                        jo.put("companyImage", ":8084/GoBetween/Assets/Files/CompanyLogo/"+rs.getString("company_logo"));
+                        jo.put("pickupDate", rs.getString("transport_request_for_date"));
+                        jo.put("pickupLocation", rs.getString("location_name"));
+                        jo.put("description", rs.getString("transport_request_description"));
+                        jo.put("deliveryAddress", rs.getString("delivery_address"));
+                        jo.put("status", rs.getString("transport_request_status"));
+                        jo.put("sheduleStatus",sheduleStatus);
+                        j.put(jo);
+                    } catch (JSONException ex) {
+                        Logger.getLogger(NewWebService.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(NewWebService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        System.out.println(j.toString());
+        return j.toString();
+    }
+
+    
+    
     /**
      * Web service operation
      */
@@ -558,11 +607,82 @@ public class NewWebService {
     public String SignUp(@WebParam(name = "name") String name, @WebParam(name = "contact") String contact, @WebParam(name = "email") String email, @WebParam(name = "aadhar") String aadhar, @WebParam(name = "location") String location, @WebParam(name = "day") String day, @WebParam(name = "month") String month, @WebParam(name = "year") String year, @WebParam(name = "password") String password, @WebParam(name = "address") String address) {
         //TODO write your implementation code here:
         String check = "Application Not Submitted";
-        String insert = "insert into tbl_user(user_name,user_contact,user_dob,user_doj,user_address,user_password,user_aadhar_number,user_email,location_id)) values('" + name + "','" + contact + "','" + year+"-"+month+"-"+day + "',curdate(),'" + address + "','" + password + "','" + aadhar + "','" + email + "','" + location + "')";
+        String insert = "insert into tbl_user(user_name,user_contact,user_dob,user_doj,user_address,user_password,user_aadhar_number,user_email,location_id) values('" + name + "','" + contact + "','" + year+"-"+month+"-"+day + "',curdate(),'" + address + "','" + password + "','" + aadhar + "','" + email + "','" + location + "')";
        if (con.executeCommand(insert)) {
             check = "Application Submitted";
         }
         return check;
     }
-    
+    /**
+     * Web service operation
+     */
+    @WebMethod(operationName = "RequestTracking")
+    public String RequestTracking(@WebParam(name = "id") String id) {
+        //TODO write your implementation code here:
+        String sel = "select * from tbl_transport_shedule s inner join tbl_transport_request r on s.transport_request_id=r.transport_request_id inner join tbl_company c on r.company_id=c.company_id where user_id='" + id + "' and transport_shedule_status=4 order by transport_shedule_id desc";
+        ResultSet rs = con.selectCommand(sel);
+        System.out.println(sel);
+        JSONArray j = new JSONArray();
+        String url_of_logo = ":8084/GoBetween/Assets/Files/CompanyLogo/";
+        try {
+            while (rs.next()) {
+                JSONObject jo = new JSONObject();
+                {
+                    try {
+//                        String a=rs.getString("transport_request_status");
+                        if(rs.getString("transport_shedule_status").equals("4"))
+                        {
+                           jo.put("status","Out For Delivery"); 
+                        }
+                        jo.put("company", rs.getString("company_name"));
+                        jo.put("logo", rs.getString("company_logo"));
+                        jo.put("id", rs.getString("transport_shedule_id"));
+                        jo.put("logourl", url_of_logo);
+                        j.put(jo);
+                    } catch (JSONException ex) {
+                        Logger.getLogger(NewWebService.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(NewWebService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        System.out.println(j.toString());
+        return j.toString();
+    }
+    /**
+     * Web service operation
+     */
+    @WebMethod(operationName = "TrackDetails")
+    public String TrackDetails(@WebParam(name = "id") String id) {
+        String sel = "select * from tbl_transport_shedule s inner join tbl_transport_request r on s.transport_request_id=r.transport_request_id inner join tbl_company c on c.company_id=r.company_id inner join tbl_location l on l.location_id=r.from_location_id inner join tbl_driver d on s.driver_id=d.driver_id inner join tbl_vehicle v on s.vehicle_id=v.vehicle_id where transport_shedule_id='" + id + "'";
+        ResultSet rs = con.selectCommand(sel);
+        System.out.println(sel);
+        JSONArray j = new JSONArray();
+        try {
+            while (rs.next()) {
+                JSONObject jo = new JSONObject();
+                {
+                    try {
+                        jo.put("deliveryDate", rs.getString("delivery_date"));
+                        jo.put("deliveryTime", rs.getString("delivery_time"));
+                        jo.put("name", rs.getString("driver_name"));
+                        jo.put("vehicle", rs.getString("vehicle_reg_no"));
+                        jo.put("details", rs.getString("transport_request_description"));
+                        jo.put("contact", rs.getString("driver_primary_contact"));
+                        jo.put("toaddress", rs.getString("transport_request_status"));
+                        jo.put("tolocation", rs.getString("location_name"));
+                        j.put(jo);
+                    } catch (JSONException ex) {
+                        Logger.getLogger(NewWebService.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(NewWebService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        System.out.println(j.toString());
+        return j.toString();
+    }
+
 }

@@ -44,7 +44,7 @@ public class Dashboard extends AppCompatActivity {
         card4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(Dashboard.this, Payment.class);
+                Intent i = new Intent(Dashboard.this, OngoingRequest.class);
                 startActivity(i);
             }
         });

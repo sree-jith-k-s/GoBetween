@@ -32,8 +32,8 @@
     %>
 
     <%        if (request.getParameter("btn_send") != null) {
-            String insQry = "insert into tbl_transport_request (delivery_time,delivery_date,transport_request_date,transport_request_time,transport_request_for_date,transport_request_description,transport_request_qty,from_location_id,to_location_id,company_id,category_id,user_id)"
-                    + " values('" + request.getParameter("time_delivery") + "','" + request.getParameter("date_del") + "',curdate(),curtime(),'" + request.getParameter("date_for") + "','" + request.getParameter("txt_desc") + "','" + request.getParameter("txt_qty") + "','" + request.getParameter("sel_location") + "','" + request.getParameter("sel_location1") + "','" + request.getParameter("cid") + "','" + request.getParameter("sel_cat") + "','" + session.getAttribute("uid") + "')";
+            String insQry = "insert into tbl_transport_request (delivery_time,delivery_date,transport_request_date,transport_request_time,transport_request_for_date,transport_request_description,transport_request_qty,from_location_id,to_location_id,company_id,category_id,user_id,delivery_address,pickup_address)"
+                    + " values('" + request.getParameter("time_delivery") + "','" + request.getParameter("date_del") + "',curdate(),curtime(),'" + request.getParameter("date_for") + "','" + request.getParameter("txt_desc") + "','" + request.getParameter("txt_qty") + "','" + request.getParameter("sel_location") + "','" + request.getParameter("sel_location1") + "','" + request.getParameter("cid") + "','" + request.getParameter("sel_cat") + "','" + session.getAttribute("uid") + "','" + request.getParameter("delivery_address") + "','" + request.getParameter("pickup_address") + "')";
             if (con.executeCommand(insQry)) {
     %> 
     <script type="text/javascript">
@@ -132,6 +132,10 @@
                         </td>
                     </tr>
                     <tr>
+                        <td>Pickup Address</td>
+                        <td><textarea name="pickup_address"></textarea></td>
+                    </tr>
+                    <tr>
                         <td colspan="2" align="center">
                             Destination
                         </td>
@@ -168,6 +172,10 @@
                                 <option>Select</option>
                             </select>
                         </td>
+                    </tr>
+                    <tr>
+                        <td>Delivery Address</td>
+                        <td><textarea name="delivery_address"></textarea></td>
                     </tr>
                     <tr>
                         <td colspan="2" align="center">

@@ -19,7 +19,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/detailName"
-        android:text="Request Details"
+        android:text="Company Details"
         android:layout_marginTop="-45dp"
         android:textSize="24sp"
         android:textStyle="bold"
@@ -27,24 +27,24 @@
 
 
 
-        <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/logo"
-            android:layout_width="120dp"
-            android:layout_height="120dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="40dp"
-            android:scaleType="centerCrop"
-            app:shapeAppearanceOverlay="@style/circle"
-            android:src="@drawable/company" />
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/logo"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="40dp"
+        android:scaleType="centerCrop"
+        app:shapeAppearanceOverlay="@style/circle"
+        android:src="@drawable/company" />
 
-        <TextView
-            android:id="@+id/companyname"
-            android:layout_width="match_parent"
-            android:layout_height="51dp"
-            android:layout_marginTop="5dp"
-            android:text="company name"
-            android:textAlignment="center"
-            android:textSize="18dp" />
+    <TextView
+        android:id="@+id/companyname"
+        android:layout_width="match_parent"
+        android:layout_height="51dp"
+        android:layout_marginTop="5dp"
+        android:text="company name"
+        android:textAlignment="center"
+        android:textSize="18dp" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/linearLayout3"
@@ -122,7 +122,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:layout_marginTop="80dp"
-                android:text="Vehicle no:"
+                android:text="Email:"
                 android:textColor="@color/lavender"
                 android:textSize="18sp" />
 
@@ -132,7 +132,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:layout_marginTop="80dp"
-                android:text="kl"
+                android:text="company@gmail.com"
                 android:textAlignment="center"
                 android:textSize="16sp" />
 
@@ -160,7 +160,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:layout_marginTop="140dp"
-                android:text="Details:"
+                android:text="Address:"
                 android:textColor="@color/lavender"
                 android:textSize="18sp" />
 
@@ -199,7 +199,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:layout_marginTop="200dp"
-                android:text="Driver Name:"
+                android:text="Since:"
                 android:textColor="@color/lavender"
                 android:textSize="18sp" />
 
@@ -237,7 +237,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:layout_marginTop="260dp"
-                android:text="To Address:"
+                android:text="Location:"
                 android:textColor="@color/lavender"
                 android:textSize="18sp" />
 
@@ -276,13 +276,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp">
-        <Button
-            android:id="@+id/b1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="305dp"
-            android:background="@drawable/background_button1"
-            android:text="Track" />
+            <Button
+                android:id="@+id/b1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="305dp"
+                android:background="@drawable/background_button1"
+                android:text="Enquiry Form" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 </LinearLayout>

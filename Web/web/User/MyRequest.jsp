@@ -55,7 +55,6 @@
                             } else if (rs.getString("transport_request_status").equals("1")) {
                                 out.println("Accepted");
                             }
-                           // out.println(rs.getString("transport_request_status"));
 
                         %>
                     </td>
@@ -66,9 +65,9 @@
 
                 %>
             </table>
-            <%            } 
-                
-                if(!rd.next()) {
+            <%            }
+
+                if (!rd.next()) {
             %>
             <table border="1">
                 <tr>

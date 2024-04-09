@@ -20,7 +20,7 @@ public class MyRequest extends AppCompatActivity {
 
     RecyclerView recycleview1;
     ImageView backto;
-    String company[],logo[],logourl[],time[];
+    String company[],logo[],logourl[],time[],requestId[];
     String id;
 
     @Override
@@ -62,12 +62,14 @@ public class MyRequest extends AppCompatActivity {
                 logo = new String[j.length()];
                 logourl = new String[j.length()];
                 time = new String[j.length()];
+                requestId = new String[j.length()];
                 for (int i = 0; i < j.length(); i++) {
                     JSONObject jo = j.getJSONObject(i);
                     company[i] = jo.getString("company");
                     logo[i] = jo.getString("logo");;
                     logourl[i] = jo.getString("logourl");;
                     time[i] = jo.getString("time");
+                    requestId[i] = jo.getString("id");
 
                 }
             } catch (JSONException e) {
@@ -79,6 +81,7 @@ public class MyRequest extends AppCompatActivity {
                 @Override
                 public void onItemClick(int position) {
                     Intent i = new Intent(MyRequest.this, RequestDetails.class);
+                    i.putExtra("id",requestId[position]);
                     startActivity(i);
                 }
             });

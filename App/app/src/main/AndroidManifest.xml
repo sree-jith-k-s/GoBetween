@@ -16,6 +16,12 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".OngoingRequest"
+            android:exported="false" />
+        <activity
+            android:name=".TrackRequest"
+            android:exported="false" />
+        <activity
             android:name=".Payment"
             android:exported="false" />
         <activity
@@ -74,6 +80,9 @@
             android:exported="false" />
         <activity
             android:name=".Largestnumber"
+            android:exported="false" />
+        <activity
+            android:name=".RequestDetails"
             android:exported="false" />
         <activity
             android:name=".calculator"

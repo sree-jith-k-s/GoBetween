@@ -133,7 +133,7 @@
                                         <button class="button is-solid primary-button is-fullwidth raised" type="submit"  name="btn_login"><span>Login</span></button>                    
                                     </div>
                                     <div align="right" style="font-size: 10dp;">
-                                        <a href="index.html" >return to home</a>    
+                                        <a href="../index.jsp" >return to home</a>    
                                     </div>
 
 

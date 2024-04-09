@@ -76,7 +76,7 @@ public class Login extends AppCompatActivity {
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
-//            Toast.makeText(Login.this, s, Toast.LENGTH_SHORT).show();
+            Toast.makeText(Login.this, s, Toast.LENGTH_SHORT).show();
             if (!s.equals("[]")) {
                 JSONArray j = null;
                 try {

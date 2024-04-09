@@ -22,7 +22,7 @@ import org.json.JSONObject;
 
 public class TrackRequest extends AppCompatActivity {
 
-    String id,sheduleStatus,requestStatus;
+    String id;
 
     TextView deliveryDate,deliveryTime,name,vehicle,details,contact,toaddress,tolocation;
     @Override
@@ -42,16 +42,16 @@ public class TrackRequest extends AppCompatActivity {
 
         Intent intent = getIntent();
         id = intent.getStringExtra("id");
-        Companydetails sp = new Companydetails();
+        Trackrequest sp = new Trackrequest();
         sp.execute(id);
 
     }
-    public class Companydetails extends AsyncTask<String, String, String> {
+    public class Trackrequest extends AsyncTask<String, String, String> {
 
         @Override
         protected String doInBackground(String... strings) {
             WebServiceCaller wb = new WebServiceCaller();
-            wb.setSoapObject("TrackRequest");
+            wb.setSoapObject("TrackDetails");
             wb.addProperty("id", strings[0]);
             wb.callWebService();
             return wb.getResponse();
@@ -64,7 +64,8 @@ public class TrackRequest extends AppCompatActivity {
             JSONArray j = null;
             try {
                 j = new JSONArray(s);
-                JSONObject jo = j.getJSONObject(0);                deliveryDate.setText(jo.getString("tolocation"));
+                JSONObject jo = j.getJSONObject(0);
+                deliveryDate.setText(jo.getString("tolocation"));
                 deliveryTime.setText(jo.getString("deliveryTime"));
                 name.setText(jo.getString("name"));
                 vehicle.setText(jo.getString("vehicle"));
