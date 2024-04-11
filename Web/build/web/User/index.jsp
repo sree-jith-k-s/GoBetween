@@ -498,7 +498,7 @@
 
             <div class="row">
 
-                <div class="col-md-6 blog-bg">
+                div class="col-md-6 blog-bg">
                     <div class="img-wrapper">
                         <img class="img fade-down" src="../Assets/Templates/web/images/bg1.jpg">
                         <div class="img-mask"><a href="single-post.htm" class="mask-icon"><i class="el-icon-link"></i></a></div>

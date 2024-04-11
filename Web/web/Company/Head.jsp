@@ -123,7 +123,7 @@
                                 <div class="dropdown-content">
                                     <a href="Complaint.jsp">Compliant</a>
                                     <a href="Feedback.jsp">Feedback</a>
-                                    <a href="../Guest/Login.jsp">logout</a>
+                                    <a href="../Guest/Login.jsp">Logout</a>
                                 </div>
                             </div>
                         </ul>

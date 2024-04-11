@@ -2,16 +2,25 @@ package com.example.gobetween;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.app.DatePickerDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.Spinner;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
 
 public class EnquiryForm extends AppCompatActivity {
     Spinner spinnerState,spinnerDistrict,spinnerLocation,spinnerCategory,spinnertoState,spinnertoDistrict,spinnertoLocation;
@@ -22,6 +31,7 @@ public class EnquiryForm extends AppCompatActivity {
     ArrayAdapter<String> tostateAdapter;
     ArrayAdapter<String> todistrictAdapter;
     ArrayAdapter<String> tolocationAdapter;
+    DatePickerDialog datePickerDialog;
 
     String districtId[], districtName[];
     String stateId[], stateName[];
@@ -43,12 +53,28 @@ public class EnquiryForm extends AppCompatActivity {
         spinnertoState = findViewById(R.id.tostate);
         spinnertoDistrict = findViewById(R.id.todistrict);
         spinnertoLocation = findViewById(R.id.tolocation);
+//        pickupDate = findViewById(R.id.pickupDate);
+//        pickupDate.setText(getTodaysDate());
         GetCategory category = new GetCategory();
         category.execute();
         GetState state = new GetState();
         state.execute();
         GettoState tostate = new GettoState();
         tostate.execute();
+
+        Spinner timeSpinner = findViewById(R.id.dtime);
+
+        List<String> timeList = new ArrayList<>();
+        for (int i = 0; i < 24; i++) {
+            for (int j = 0; j < 60; j+=15) {
+                String time = String.format("%02d:%02d", i, j);
+                timeList.add(time);
+            }
+        }
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, timeList);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        timeSpinner.setAdapter(adapter);
         spinnerState.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -424,7 +450,6 @@ public class EnquiryForm extends AppCompatActivity {
             tolocationAdapter = new ArrayAdapter<String>(EnquiryForm.this, android.R.layout.simple_spinner_item, tolocationName);
             tolocationAdapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
             spinnertoLocation.setAdapter(tolocationAdapter);
-
         }
     }
 }

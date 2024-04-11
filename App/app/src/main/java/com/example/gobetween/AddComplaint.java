@@ -133,7 +133,7 @@ public class AddComplaint extends AppCompatActivity {
             Toast.makeText(AddComplaint.this, "Complaint submitted: " + message, Toast.LENGTH_SHORT).show();
             Intent i = new Intent(AddComplaint.this,Dashboard.class);
             startActivity(i);
-            execute(message);
+//            execute(message);
         }
     }
 }

@@ -36,18 +36,58 @@
                 android:text="Pick up Date:"
                 android:textSize="24dp" />
 
-            <!-- Name -->
-            <EditText
+            <LinearLayout
+                android:orientation="horizontal"
                 android:layout_width="238dp"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:layout_gravity="end"
-                android:layout_marginBottom="16dp"
-                android:background="@drawable/custom_edittext"
-                android:hint="DD/MM/YYYY"
                 android:layout_marginTop="-40dp"
-                android:inputType="date"
-                android:padding="12dp"
-                android:textSize="16sp" />
+                android:layout_marginBottom="16dp">
+
+                <!-- Day -->
+                <EditText
+                    android:id="@+id/pday"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="DD"
+                    android:layout_marginTop="10dp"
+                    android:textAlignment="center"
+                    android:background="@drawable/custom_edittext"
+                    android:inputType="number"
+                    android:maxLength="2"
+                    android:maxLines="1"
+                    android:padding="8dp"/>
+
+                <!-- Month -->
+                <EditText
+                    android:id="@+id/pmonth"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="MM"
+                    android:textAlignment="center"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/custom_edittext"
+                    android:inputType="number"
+                    android:maxLength="2"
+                    android:maxLines="1"
+                    android:padding="8dp"/>
+
+                <!-- Year -->
+                <EditText
+                    android:id="@+id/pyear"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="YYYY"
+                    android:textAlignment="center"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/custom_edittext"
+                    android:maxLength="4"
+                    android:maxLines="1"
+                    android:padding="8dp"/>
+            </LinearLayout>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -55,18 +95,58 @@
                 android:text="Delivery Date:"
                 android:textSize="24dp" />
 
-            <!-- Name -->
-            <EditText
+            <LinearLayout
+                android:orientation="horizontal"
                 android:layout_width="238dp"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:layout_gravity="end"
                 android:layout_marginTop="-40dp"
-                android:layout_marginBottom="16dp"
-                android:background="@drawable/custom_edittext"
-                android:hint="DD/MM/YYYY"
-                android:inputType="date"
-                android:padding="12dp"
-                android:textSize="16sp" />
+                android:layout_marginBottom="16dp">
+
+                <!-- Day -->
+                <EditText
+                    android:id="@+id/dday"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="DD"
+                    android:layout_marginTop="10dp"
+                    android:textAlignment="center"
+                    android:background="@drawable/custom_edittext"
+                    android:inputType="number"
+                    android:maxLength="2"
+                    android:maxLines="1"
+                    android:padding="8dp"/>
+
+                <!-- Month -->
+                <EditText
+                    android:id="@+id/dmonth"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="MM"
+                    android:textAlignment="center"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/custom_edittext"
+                    android:inputType="number"
+                    android:maxLength="2"
+                    android:maxLines="1"
+                    android:padding="8dp"/>
+
+                <!-- Year -->
+                <EditText
+                    android:id="@+id/dyear"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="YYYY"
+                    android:textAlignment="center"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/custom_edittext"
+                    android:maxLength="4"
+                    android:maxLines="1"
+                    android:padding="8dp"/>
+            </LinearLayout>
 
             <!-- Email -->
             <TextView
@@ -76,17 +156,28 @@
                 android:textSize="24dp" />
 
             <!-- Name -->
-            <EditText
+            <LinearLayout
+                android:orientation="horizontal"
                 android:layout_width="238dp"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:layout_gravity="end"
-                android:layout_marginBottom="16dp"
-                android:background="@drawable/custom_edittext"
-                android:hint=""
                 android:layout_marginTop="-40dp"
-                android:inputType="time"
-                android:padding="12dp"
-                android:textSize="16sp" />
+                android:layout_marginBottom="16dp">
+                <!-- Year -->
+                <Spinner
+                    android:id="@+id/dtime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="YYYY"
+                    android:textAlignment="center"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/custom_edittext"
+                    android:maxLength="4"
+                    android:maxLines="1"
+                    android:padding="8dp"/>
+            </LinearLayout>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -260,6 +351,28 @@
                     android:textAlignment="center"
                     android:textSize="16sp" />
             </FrameLayout>
+
+            <TextView
+                android:layout_width="146dp"
+                android:layout_height="64dp"
+                android:text="Pickup Address:"
+                android:textSize="24dp" />
+
+            <!-- Name -->
+            <EditText
+                android:id="@+id/pickupAddress"
+                android:layout_width="238dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/custom_edittext"
+                android:hint=""
+                android:layout_marginTop="-60dp"
+                android:inputType="textMultiLine"
+                android:minLines="3"
+                android:maxLines="6"
+                android:padding="12dp"
+                android:textSize="16sp" />
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
@@ -366,6 +479,28 @@
                     android:textAlignment="center"
                     android:textSize="16sp" />
             </FrameLayout>
+
+            <TextView
+                android:layout_width="146dp"
+                android:layout_height="64dp"
+                android:text="Delivery Address:"
+                android:textSize="24dp" />
+
+            <!-- Name -->
+            <EditText
+                android:id="@+id/deliveryAddress"
+                android:layout_width="238dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/custom_edittext"
+                android:hint=""
+                android:layout_marginTop="-60dp"
+                android:inputType="textMultiLine"
+                android:minLines="3"
+                android:maxLines="6"
+                android:padding="12dp"
+                android:textSize="16sp" />
 
             <!-- Submit Button -->
             <Button

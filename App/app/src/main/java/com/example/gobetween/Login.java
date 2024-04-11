@@ -51,14 +51,14 @@ public class Login extends AppCompatActivity {
             }
         });
     }
-    public void onBackPressed() {
-        Intent intent = new Intent(Login.this, Login.class);
-        startActivity(intent);
-//        Toast.makeText(Login.this, "Logout to exit", Toast.LENGTH_SHORT).show();
-        // Disable back button functionality
-        // Or you can leave this empty to do nothing when back button is pressed
-        super.onBackPressed();
-    }
+//    public void onBackPressed() {
+//        Intent intent = new Intent(Login.this, Login.class);
+//        startActivity(intent);
+////        Toast.makeText(Login.this, "Logout to exit", Toast.LENGTH_SHORT).show();
+//        // Disable back button functionality
+//        // Or you can leave this empty to do nothing when back button is pressed
+//        super.onBackPressed();
+//    }
 
     public class LoginDetails extends AsyncTask<String, String, String> {
 

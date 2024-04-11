@@ -22,7 +22,7 @@ import org.json.JSONObject;
 
 public class RequestDetails extends AppCompatActivity {
 
-    String id,sheduleStatus,requestStatus;
+    String id,sheduleStatus,requestStatus,sid;
 
     TextView companyName,pickupLocation,pickupDate,description,deliveryAddress,status;
 
@@ -46,11 +46,29 @@ public class RequestDetails extends AppCompatActivity {
 
         Intent intent = getIntent();
         id = intent.getStringExtra("id");
-        Companydetails sp = new Companydetails();
+        Requestdetails sp = new Requestdetails();
         sp.execute(id);
+        buttonTrack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i=new Intent(RequestDetails.this, TrackRequest.class);
+                Toast.makeText(RequestDetails.this, "hello", Toast.LENGTH_SHORT).show();
+                i.putExtra("id",sid);
+                startActivity(i);
 
+            }
+        });
+        buttonPay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i=new Intent(RequestDetails.this, Payment.class);
+                Toast.makeText(RequestDetails.this, "hi", Toast.LENGTH_SHORT).show();
+                i.putExtra("id",id);
+                startActivity(i);
+            }
+        });
     }
-    public class Companydetails extends AsyncTask<String, String, String> {
+    public class Requestdetails extends AsyncTask<String, String, String> {
 
         @Override
         protected String doInBackground(String... strings) {
@@ -76,6 +94,7 @@ public class RequestDetails extends AppCompatActivity {
                 deliveryAddress.setText(jo.getString("deliveryAddress"));
                 requestStatus=jo.getString("status");
                 sheduleStatus=jo.getString("sheduleStatus");
+                sid=jo.getString("sid");
                 Picasso.get().load("http://"+ip+jo.getString("companyImage")).into(companyImage);
                 int statusInt = Integer.parseInt(requestStatus);
                 int shedulestatusInt = Integer.parseInt(sheduleStatus);

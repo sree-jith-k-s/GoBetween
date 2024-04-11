@@ -79,7 +79,6 @@ String feedbackMessage;
             Toast.makeText(Feedback.this, "Feedback submitted: " + message, Toast.LENGTH_SHORT).show();
             Intent i = new Intent(Feedback.this,Settings.class);
             startActivity(i);
-            execute(message);
         }
     }
 }

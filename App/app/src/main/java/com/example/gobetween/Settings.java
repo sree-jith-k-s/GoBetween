@@ -57,6 +57,8 @@ public class Settings extends AppCompatActivity {
 
         // Redirect to login activity
         Intent intent = new Intent(Settings.this, Login.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NO_HISTORY);
+        startActivity(intent);
         startActivity(intent);
         finish(); // Close current activity
     }

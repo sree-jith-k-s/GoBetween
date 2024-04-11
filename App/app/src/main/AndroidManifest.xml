@@ -16,10 +16,13 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".OngoingRequest"
+            android:name=".TrackRequest"
             android:exported="false" />
         <activity
-            android:name=".TrackRequest"
+            android:name=".TrackDetails"
+            android:exported="false" />
+        <activity
+            android:name=".OngoingRequest"
             android:exported="false" />
         <activity
             android:name=".Payment"

@@ -566,6 +566,7 @@ public class NewWebService {
         System.out.println(sel);
         JSONArray j = new JSONArray();
         String sheduleStatus = "0";
+        String sid ="0";
         try {
             while (rs.next()) {
                 String selQry = "select * from tbl_transport_shedule where transport_request_id='"+id+"'";
@@ -573,6 +574,7 @@ public class NewWebService {
                 if(rsData.next())
                 {
                     sheduleStatus = rsData.getString("transport_shedule_status");
+                    sid = rsData.getString("transport_shedule_id");
                 }
                 JSONObject jo = new JSONObject();
                 {
@@ -585,6 +587,7 @@ public class NewWebService {
                         jo.put("deliveryAddress", rs.getString("delivery_address"));
                         jo.put("status", rs.getString("transport_request_status"));
                         jo.put("sheduleStatus",sheduleStatus);
+                        jo.put("sid",sid);
                         j.put(jo);
                     } catch (JSONException ex) {
                         Logger.getLogger(NewWebService.class.getName()).log(Level.SEVERE, null, ex);
@@ -659,8 +662,19 @@ public class NewWebService {
         ResultSet rs = con.selectCommand(sel);
         System.out.println(sel);
         JSONArray j = new JSONArray();
+        String sheduleStatus = "0";
+        String place ="0";
+        String date ="0";
         try {
-            while (rs.next()) {
+            while (rs.next())
+            {
+////                String selQry = "select * from tbl_transport_update where transport_shedule_id='"+id+"'";
+////                ResultSet rsData = con.selectCommand(selQry);
+////                 if(rsData.next())
+////                {
+////                    place = rsData.getString("transport_update_location");
+////                    date = rsData.getString("transport_update_datetime");
+//                }
                 JSONObject jo = new JSONObject();
                 {
                     try {
@@ -670,7 +684,7 @@ public class NewWebService {
                         jo.put("vehicle", rs.getString("vehicle_reg_no"));
                         jo.put("details", rs.getString("transport_request_description"));
                         jo.put("contact", rs.getString("driver_primary_contact"));
-                        jo.put("toaddress", rs.getString("transport_request_status"));
+                        jo.put("toaddress", rs.getString("delivery_address"));
                         jo.put("tolocation", rs.getString("location_name"));
                         j.put(jo);
                     } catch (JSONException ex) {
@@ -683,6 +697,29 @@ public class NewWebService {
         }
         System.out.println(j.toString());
         return j.toString();
+    }
+
+    /**
+     * Web service operation
+     */
+    @WebMethod(operationName = "payment")
+    public String payment(@WebParam(name = "id") String id) {
+       String check = "";
+       if(id.equals(0))
+       {
+        String upQry = "update tbl_transport_shedule set transport_shedule_status =2  where transport_shedule_id='" + id + "'";
+        if (con.executeCommand(upQry)) {
+            check = "Payment Sucessfull";
+        }
+       }
+       else if(id.equals(5))
+           {
+        String upQry = "update tbl_transport_shedule set transport_shedule_status =5  where transport_shedule_id='" + id + "'";
+        if (con.executeCommand(upQry)) {
+            check = "Payment Sucessfull";
+        }
+       }
+        return check;
     }
 
 }

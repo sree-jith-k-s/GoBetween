@@ -1,9 +1,267 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".TrackRequest">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="10dp">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <!-- Title -->
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Order Tracking"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="16dp"/>
+
+        <!-- Order Status -->
+        <TextView
+            android:id="@+id/order_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Status: Out for Delivery"
+            android:textSize="18sp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="16dp"/>
+
+        <!-- Tracking Information -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="16dp">
+
+            <!-- Estimated Delivery Label -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Estimated Delivery:"
+                android:textSize="18sp"/>
+
+            <!-- Delivery Date -->
+            <TextView
+                android:id="@+id/deliveryDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="March 14, 2024"
+                android:textSize="18sp"
+                android:layout_marginStart="5dp"/>
+
+            <!-- Delivery Time -->
+            <TextView
+                android:id="@+id/deliveryTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="10:00 AM"
+                android:textSize="18sp"
+                android:layout_marginStart="5dp"/>
+        </LinearLayout>
+
+
+        <!-- Additional Order Details -->
+        <TextView
+            android:id="@+id/additional_details"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Additional Details:"
+            android:textSize="18sp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="16dp"/>
+
+        <!-- RecyclerView for displaying additional order details (if any) -->
+        <!-- order_tracking_details_layout.xml -->
+        <View
+            android:id="@+id/view1"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_margin="10dp"
+            android:background="#D9D9D9" />
+
+        <!-- Driver Name -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_margin="5dp">
+            <TextView
+                android:id="@+id/textView10"
+                android:layout_width="76dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Driver Name:"
+                android:textColor="@color/lavender"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="144dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="12345678"
+                android:textAlignment="center"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <!-- View 1 -->
+        <View
+            android:id="@+id/view2"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_margin="5dp"
+            android:background="#D9D9D9" />
+
+        <!-- Vehicle Number -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_margin="5dp">
+            <TextView
+                android:id="@+id/textView11"
+                android:layout_width="76dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Vehicle no:"
+                android:textColor="@color/lavender"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/vehicle"
+                android:layout_width="144dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="DL"
+                android:textAlignment="center"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <!-- View 1 -->
+        <View
+            android:id="@+id/view3"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_margin="5dp"
+            android:background="#D9D9D9" />
+
+        <!-- Order Details -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_margin="5dp">
+            <TextView
+                android:id="@+id/textView12"
+                android:layout_width="76dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Order Details:"
+                android:textColor="@color/lavender"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/details"
+                android:layout_width="144dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="boxes"
+                android:textAlignment="center"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <!-- View 1 -->
+        <View
+            android:id="@+id/view4"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_margin="5dp"
+            android:background="#D9D9D9" />
+
+        <!-- Driver Contact -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_margin="5dp">
+            <TextView
+                android:id="@+id/textView13"
+                android:layout_width="76dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Driver Contact:"
+                android:textColor="@color/lavender"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/contact"
+                android:layout_width="144dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="999999999"
+                android:textAlignment="center"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <!-- View 1 -->
+        <View
+            android:id="@+id/view5"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_margin="10dp"
+            android:background="#D9D9D9" />
+
+        <!-- To Address -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_margin="5dp">
+
+            <TextView
+                android:id="@+id/textView14"
+                android:layout_width="122dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="To Address:"
+                android:textColor="@color/lavender"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/toaddress"
+                android:layout_width="76dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="999999999"
+                android:textAlignment="center"
+                android:textSize="16sp" />
+            <TextView
+                android:id="@+id/tolocation"
+                android:layout_width="76dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="999999999"
+                android:textAlignment="center"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <!-- View 1 -->
+        <View
+            android:id="@+id/view6"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_margin="10dp"
+            android:background="#D9D9D9" />
+
+        <!-- Repeat the layout elements for other details as needed -->
+
+    </LinearLayout>
+
+</LinearLayout>
