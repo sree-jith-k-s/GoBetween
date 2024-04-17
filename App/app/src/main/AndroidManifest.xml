@@ -16,11 +16,22 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".TrackRequest"
+            android:name=".WebPayment2"
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="mypayment" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".WebPayment"
             android:exported="false" />
         <activity
-            android:name=".TrackDetails"
+            android:name=".TrackRequest"
             android:exported="false" />
+
         <activity
             android:name=".OngoingRequest"
             android:exported="false" />
@@ -48,9 +59,7 @@
         <activity
             android:name=".MyRequest"
             android:exported="false" />
-        <activity
-            android:name=".MainActivity"
-            android:exported="false" />
+
         <activity
             android:name=".Searchcompany"
             android:exported="false" />
@@ -81,16 +90,10 @@
         <activity
             android:name=".Login"
             android:exported="false" />
-        <activity
-            android:name=".Largestnumber"
-            android:exported="false" />
+
         <activity
             android:name=".RequestDetails"
             android:exported="false" />
-        <activity
-            android:name=".calculator"
-            android:exported="false" />
-
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

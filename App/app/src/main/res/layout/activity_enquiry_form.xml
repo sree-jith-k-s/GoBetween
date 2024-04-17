@@ -165,7 +165,35 @@
                 android:layout_marginBottom="16dp">
                 <!-- Year -->
                 <Spinner
-                    android:id="@+id/dtime"
+                    android:id="@+id/hour"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/custom_edittext"
+                    android:hint="YYYY"
+                    android:maxLength="4"
+                    android:maxLines="1"
+                    android:padding="8dp"
+                    android:textAlignment="center" />
+
+                <Spinner
+                    android:id="@+id/minute"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="MM"
+                    android:textAlignment="center"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/custom_edittext"
+                    android:inputType="number"
+                    android:maxLength="2"
+                    android:maxLines="1"
+                    android:padding="8dp"/>
+
+                <!-- Year -->
+                <Spinner
+                    android:id="@+id/meridiem"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -215,6 +243,7 @@
 
             <!-- Name -->
             <EditText
+                android:id="@+id/description"
                 android:layout_width="238dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
@@ -235,6 +264,7 @@
 
             <!-- Name -->
             <EditText
+                android:id="@+id/quantity"
                 android:layout_width="238dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
@@ -504,7 +534,7 @@
 
             <!-- Submit Button -->
             <Button
-                android:id="@+id/b1"
+                android:id="@+id/submitbutton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Submit"
@@ -515,10 +545,6 @@
                 app:cornerRadius="20dp"
                 android:padding="1dp"
                 android:layout_marginTop="16dp"/>
-
         </LinearLayout>
-
     </ScrollView>
-
-
 </LinearLayout>

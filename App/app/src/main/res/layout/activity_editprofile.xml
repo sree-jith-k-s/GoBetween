@@ -41,21 +41,6 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent">
-
-                        <ImageView
-                            android:id="@+id/arrow"
-                            android:layout_width="44dp"
-                            android:layout_height="46dp"
-                            android:layout_gravity="start|center_vertical|center"
-                            android:paddingBottom="20dp"
-                            android:src="@drawable/baseline_arrow_back_24"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="0.002"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="@+id/imageView1"
-                            app:layout_constraintVertical_bias="0.047" />
-
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -129,6 +114,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:text="edward"
+                                android:inputType="textPersonName"
                                 android:textAlignment="center"
                                 android:textSize="16sp" />
 
@@ -168,6 +154,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:text="edward@gmail.com"
+                                android:inputType="textEmailAddress"
                                 android:textAlignment="center"
                                 android:textSize="16sp" />
 
@@ -206,6 +193,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:text="+91 9740826104"
+                                android:inputType="number"
                                 android:textAlignment="center"
                                 android:textSize="16sp" />
 
@@ -243,6 +231,7 @@
                                 android:layout_width="122dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
+                                android:inputType="textMultiLine"
                                 android:text="NY-Street 21-no 34"
                                 android:textAlignment="center"
                                 android:textSize="16sp" />
@@ -282,6 +271,9 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:text="1234567890"
+                                android:maxLength="12"
+                                android:inputType="number"
+                                android:digits="0123456789"
                                 android:textAlignment="center"
                                 android:textSize="16sp" />
 

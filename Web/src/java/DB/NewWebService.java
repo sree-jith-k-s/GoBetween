@@ -567,6 +567,7 @@ public class NewWebService {
         JSONArray j = new JSONArray();
         String sheduleStatus = "0";
         String sid ="0";
+        String amount ="0";
         try {
             while (rs.next()) {
                 String selQry = "select * from tbl_transport_shedule where transport_request_id='"+id+"'";
@@ -575,6 +576,7 @@ public class NewWebService {
                 {
                     sheduleStatus = rsData.getString("transport_shedule_status");
                     sid = rsData.getString("transport_shedule_id");
+                    amount = rsData.getString("transport_amount");
                 }
                 JSONObject jo = new JSONObject();
                 {
@@ -588,6 +590,7 @@ public class NewWebService {
                         jo.put("status", rs.getString("transport_request_status"));
                         jo.put("sheduleStatus",sheduleStatus);
                         jo.put("sid",sid);
+                        jo.put("amount",amount);
                         j.put(jo);
                     } catch (JSONException ex) {
                         Logger.getLogger(NewWebService.class.getName()).log(Level.SEVERE, null, ex);
@@ -663,18 +666,18 @@ public class NewWebService {
         System.out.println(sel);
         JSONArray j = new JSONArray();
         String sheduleStatus = "0";
-        String place ="0";
-        String date ="0";
+        String place ="Updated Not Yet";
+        String date ="Updated Not Yet";
         try {
             while (rs.next())
             {
-////                String selQry = "select * from tbl_transport_update where transport_shedule_id='"+id+"'";
-////                ResultSet rsData = con.selectCommand(selQry);
-////                 if(rsData.next())
-////                {
-////                    place = rsData.getString("transport_update_location");
-////                    date = rsData.getString("transport_update_datetime");
-//                }
+               String selQry = "select * from tbl_transport_update u inner join tbl_location l on u.transport_update_location=l.location_id where transport_shedule_id='"+id+"'";
+               ResultSet rsData = con.selectCommand(selQry);
+               if(rsData.next())
+               {
+                  place = rsData.getString("location_name");
+                  date = rsData.getString("transport_update_datetime");
+                }
                 JSONObject jo = new JSONObject();
                 {
                     try {
@@ -686,6 +689,8 @@ public class NewWebService {
                         jo.put("contact", rs.getString("driver_primary_contact"));
                         jo.put("toaddress", rs.getString("delivery_address"));
                         jo.put("tolocation", rs.getString("location_name"));
+                        jo.put("lastseen",place);;
+                        jo.put("lastdate",date);
                         j.put(jo);
                     } catch (JSONException ex) {
                         Logger.getLogger(NewWebService.class.getName()).log(Level.SEVERE, null, ex);
@@ -703,23 +708,42 @@ public class NewWebService {
      * Web service operation
      */
     @WebMethod(operationName = "payment")
-    public String payment(@WebParam(name = "id") String id) {
+    public String payment(@WebParam(name = "id") String id, @WebParam(name = "status") String status) {
        String check = "";
-       if(id.equals(0))
+       System.out.println(id);
+        System.out.println(status);
+       if(status.equals("0"))
        {
-        String upQry = "update tbl_transport_shedule set transport_shedule_status =2  where transport_shedule_id='" + id + "'";
+        String upQry = "update tbl_transport_shedule set transport_shedule_status =2  where transport_request_id='" + id + "'";
+
         if (con.executeCommand(upQry)) {
+            System.out.println(upQry);
             check = "Payment Sucessfull";
         }
        }
-       else if(id.equals(5))
+       else if(status.equals("5"))
            {
-        String upQry = "update tbl_transport_shedule set transport_shedule_status =5  where transport_shedule_id='" + id + "'";
-        if (con.executeCommand(upQry)) {
+        String upQry2 = "update tbl_transport_shedule set transport_shedule_status =6  where transport_request_id='" + id + "'";  
+        if (con.executeCommand(upQry2)) {
+            System.out.println(upQry2);
             check = "Payment Sucessfull";
         }
        }
         return check;
     }
 
+    /**
+     * Web service operation
+     */
+    @WebMethod(operationName = "Enquiry")
+    public String Enquiry(@WebParam(name = "id") String id, @WebParam(name = "Pday") String Pday, @WebParam(name = "Pmonth") String Pmonth, @WebParam(name = "Pyear") String Pyear, @WebParam(name = "Dday") String Dday, @WebParam(name = "Dmonth") String Dmonth, @WebParam(name = "Dyear") String Dyear, @WebParam(name = "Hour") String Hour, @WebParam(name = "Minute") String Minute, @WebParam(name = "Description") String Description, @WebParam(name = "Quantity") String Quantity, @WebParam(name = "PickupAddress") String PickupAddress, @WebParam(name = "DeliveryAddress") String DeliveryAddress, @WebParam(name = "cid") String cid, @WebParam(name = "plid") String plid, @WebParam(name = "dlid") String dlid,@WebParam(name = "coid") String coid) {
+        //TODO write your implementation code here:
+        String check = "Application Not Submitted";
+        String insert = "insert into tbl_transport_request(transport_request_description,transport_request_date,transport_request_qty,transport_request_for_date,from_location_id,to_location_id,category_id,delivery_time,delivery_date,transport_request_time,delivery_address,pickup_address,company_id,user_id) values('" + Description + "',curdate(),'" + Quantity + "','" + Pyear+"-"+Pmonth+"-"+Pday + "','" + plid + "','" + dlid + "','" + cid + "','" + Hour+":"+Minute+ "','" + Dyear+"-"+Dmonth+"-"+Dday + "',curtime(),'" + DeliveryAddress + "','" + PickupAddress+ "','" + coid + "','" + id + "')";
+      System.out.println(insert);
+        if (con.executeCommand(insert)) {
+            check = "Application Submitted";
+        }
+        return check;
+    }
 }

@@ -1,50 +1,47 @@
-<%-- 
-    Document   : License
-    Created on : May 23, 2021, 6:40:37 PM
-    Author     : Pro-TECH
---%>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Go-Between</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
 
-<%@page import="java.sql.ResultSet"%>
-<jsp:useBean class="DB.ConnectionClass" id="con"></jsp:useBean>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-    <head>
-        <%@include file="Head.jsp" %>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Go-Between</title>
-    </head>
-    <body>
-        <div id="tab" align="center">
+<body>
+    <div id="tab" class="container mt-5">
+        <form method="post" enctype="multipart/form-data" action="../Assets/ActionPages/LicenseUploadAction.jsp" class="border p-4 rounded"> 
+            <h1 class="mb-4">License Details</h1>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="txt_number">Number</label>
+                        <input type="text" class="form-control" id="txt_number" maxlength="16" name="txt_number">
+                    </div>
+                    <div class="form-group">
+                        <label for="file_front">Front Photo</label>
+                        <input type="file" class="form-control-file" id="file_front" name="file_front">
+                    </div>
+                    <div class="form-group">
+                        <label for="file_back">Back Photo</label>
+                        <input type="file" class="form-control-file" id="file_back" name="file_back">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="txt_class">Class</label>
+                        <input type="text" class="form-control" id="txt_class" name="txt_class">
+                    </div>
+                    <div class="form-group">
+                        <label for="date_issue">Issued Date</label>
+                        <input type="date" class="form-control" id="date_issue" name="date_issue">
+                        <input type="hidden" name="txt_id" value="<%=request.getParameter("id")%>">
+                    </div>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary" name="btn_submit">Submit</button>
+        </form>
+    </div>
 
-            <form method="post" enctype="multipart/form-data" action="../Assets/ActionPages/LicenseUploadAction.jsp"> 
-                <h1>License Details</h1>
-                <table border="1">
-                    <tr>
-                        <td>Number</td>
-                        <td><input type="text" name="txt_number"></td>
-                    </tr>
-                     <tr>
-                        <td>Front Photo</td>
-                        <td><input type="file" name="file_front"></td>
-                    </tr>
-                    <tr>
-                        <td>Back Photo</td>
-                        <td><input type="file" name="file_back"></td>
-                    </tr>
-                    <tr>
-                        <td>Class</td>
-                        <td><input type="text" name="txt_class"></td>
-                    </tr>
-                    <tr>
-                        <td>Issued Date</td>
-                        <td><input type="date" name="date_issue"></td>
-                    </tr>
-                </table>
-                <input type="submit" name="btn_submit" value="Submit">
-            </form>
-        </div>
-         
-    </body>
-    <%@include file="Foot.jsp" %>
-</html>
+    <!-- Bootstrap JS (Optional, if you need JavaScript features) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>

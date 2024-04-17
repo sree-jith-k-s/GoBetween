@@ -19,7 +19,6 @@ import org.json.JSONObject;
 public class OngoingRequest extends AppCompatActivity {
 
     RecyclerView recycleview1;
-    ImageView backto;
     String company[],logo[],logourl[],status[],Id[];
     String id;
 
@@ -27,20 +26,11 @@ public class OngoingRequest extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ongoing_request);
-        backto = findViewById(R.id.arrow);
         recycleview1=findViewById(R.id.recycleview1);
         OngoingRequest.Requesttracking s = new OngoingRequest.Requesttracking();
         SharedPreferences sh=getSharedPreferences("user",MODE_PRIVATE);
         id=sh.getString("id","");
         s.execute(id);
-        backto.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i=new Intent(OngoingRequest.this, Dashboard.class);
-                startActivity(i);
-            }
-        });
-
     }
     public class Requesttracking extends AsyncTask<String, String, String> {
 

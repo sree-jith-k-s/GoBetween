@@ -22,12 +22,12 @@ import org.json.JSONObject;
 
 public class RequestDetails extends AppCompatActivity {
 
-    String id,sheduleStatus,requestStatus,sid;
+    String id,sheduleStatus,requestStatus,sid,amount;
 
     TextView companyName,pickupLocation,pickupDate,description,deliveryAddress,status;
 
     ImageView companyImage;
-    Button buttonPay,buttonTrack;
+    Button buttonPay,buttonPay2,buttonTrack;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +41,7 @@ public class RequestDetails extends AppCompatActivity {
         status = findViewById(R.id.status);
         companyImage = findViewById(R.id.companyImage);
         buttonPay = findViewById(R.id.buttonPay);
+        buttonPay2 = findViewById(R.id.buttonPay2);
         buttonTrack = findViewById(R.id.buttonTrack);
 
 
@@ -52,7 +53,7 @@ public class RequestDetails extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i=new Intent(RequestDetails.this, TrackRequest.class);
-                Toast.makeText(RequestDetails.this, "hello", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(RequestDetails.this, "hello", Toast.LENGTH_SHORT).show();
                 i.putExtra("id",sid);
                 startActivity(i);
 
@@ -61,9 +62,22 @@ public class RequestDetails extends AppCompatActivity {
         buttonPay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i=new Intent(RequestDetails.this, Payment.class);
-                Toast.makeText(RequestDetails.this, "hi", Toast.LENGTH_SHORT).show();
-                i.putExtra("id",id);
+                Intent i=new Intent(RequestDetails.this, WebPayment .class);
+//                Toast.makeText(RequestDetails.this, "hi", Toast.LENGTH_SHORT).show();
+                i.putExtra("id",sid);
+                i.putExtra("status",sheduleStatus);
+                i.putExtra("amount",amount);
+                startActivity(i);
+            }
+        });
+        buttonPay2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i=new Intent(RequestDetails.this, WebPayment2 .class);
+//                Toast.makeText(RequestDetails.this, "hi", Toast.LENGTH_SHORT).show();
+                i.putExtra("id",sid);
+                i.putExtra("status",sheduleStatus);
+                i.putExtra("amount",amount);
                 startActivity(i);
             }
         });
@@ -95,6 +109,7 @@ public class RequestDetails extends AppCompatActivity {
                 requestStatus=jo.getString("status");
                 sheduleStatus=jo.getString("sheduleStatus");
                 sid=jo.getString("sid");
+                amount=jo.getString("amount");
                 Picasso.get().load("http://"+ip+jo.getString("companyImage")).into(companyImage);
                 int statusInt = Integer.parseInt(requestStatus);
                 int shedulestatusInt = Integer.parseInt(sheduleStatus);
@@ -103,11 +118,13 @@ public class RequestDetails extends AppCompatActivity {
                     if(shedulestatusInt==0)
                     {
                         status.setText("Pay 25% Amount");
-                        buttonPay.setVisibility(View.VISIBLE);
+                        buttonPay2.setVisibility(View.VISIBLE);
                         buttonTrack.setVisibility(View.GONE);
+                        buttonPay.setVisibility(View.GONE);
                     }
                     else if(shedulestatusInt==2)
                     {
+                        buttonPay2.setVisibility(View.GONE);
                         buttonPay.setVisibility(View.GONE);
                         buttonTrack.setVisibility(View.GONE);
                         status.setText("Processing...");
@@ -115,25 +132,29 @@ public class RequestDetails extends AppCompatActivity {
                     else if (shedulestatusInt==3)
                     {
                         status.setText("Not Yet Started...");
+                        buttonPay2.setVisibility(View.GONE);
                         buttonTrack.setVisibility(View.GONE);
                         buttonPay.setVisibility(View.GONE);
                     }
                     else if (shedulestatusInt==4)
                     {
                         status.setText("Out For Delivery");
+                        buttonPay2.setVisibility(View.GONE);
                         buttonTrack.setVisibility(View.VISIBLE);
                         buttonPay.setVisibility(View.GONE);
                     }
                     else if (shedulestatusInt==5)
                     {
                         status.setText("Pay the Balance Amount");
+                        buttonPay2.setVisibility(View.GONE);
                         buttonTrack.setVisibility(View.GONE);
                         buttonPay.setVisibility(View.VISIBLE);
 
                     }
-                    else if (shedulestatusInt==5)
+                    else if (shedulestatusInt==6)
                     {
                         status.setText("Delivered");
+                        buttonPay2.setVisibility(View.GONE);
                         buttonTrack.setVisibility(View.GONE);
                         buttonPay.setVisibility(View.GONE);
 
@@ -142,18 +163,21 @@ public class RequestDetails extends AppCompatActivity {
                 else if(statusInt==2)
                 {
                     status.setText("Rejected");
+                    buttonPay2.setVisibility(View.GONE);
                     buttonTrack.setVisibility(View.GONE);
                     buttonPay.setVisibility(View.GONE);
                 }
                 else if(statusInt==1)
                 {
                     status.setText("Vehicle Not Assigned");
+                    buttonPay2.setVisibility(View.GONE);
                     buttonTrack.setVisibility(View.GONE);
                     buttonPay.setVisibility(View.GONE);
                 }
                 else if(statusInt==0)
                 {
                     status.setText("Pending");
+                    buttonPay2.setVisibility(View.GONE);
                     buttonTrack.setVisibility(View.GONE);
                     buttonPay.setVisibility(View.GONE);
                 }
@@ -163,4 +187,15 @@ public class RequestDetails extends AppCompatActivity {
             }
         }
     }
+    @Override
+    public void onBackPressed() {
+        // Create an intent to navigate to the target activity
+        Intent intent = new Intent(this, MyRequest.class);
+        // Add flags to clear the activity stack up to the target activity
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+        startActivity(intent); // Start the target activity
+        finish();
+        super.onBackPressed();// Finish the current payment activity
+    }
+
 }

@@ -144,7 +144,7 @@
                                 <div class="field">
                                     <label>Contact</label>
                                     <div class="control">
-                                        <input type="text" required="" class="input" name="txt_contact" placeholder="Enter company contact">
+                                        <input type="text" required="" class="input" name="txt_contact" maxlength="10" placeholder="Enter company contact">
                                     </div>
                                 </div>
                                 <div class="field">
@@ -236,13 +236,13 @@
                                 <div class="field">
                                     <label>Contact</label>
                                     <div class="control">
-                                        <input type="text" required="" name="txt_onumber" class="input" placeholder="Enter owner contact">
+                                        <input type="text" required="" name="txt_onumber" class="input" maxlength="10" placeholder="Enter owner contact">
                                     </div>
                                 </div>
                                 <div class="field">
                                     <label>Email</label>
                                     <div class="control">
-                                        <input type="text" required="" name="txt_oemail" class="input" placeholder="Enter owner email address">
+                                        <input type="email" required="" name="txt_oemail" class="input" placeholder="Enter owner email address">
                                     </div>
                                 </div>
                                 <div class="field">

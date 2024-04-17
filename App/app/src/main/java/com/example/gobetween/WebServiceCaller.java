@@ -9,7 +9,7 @@ import org.ksoap2.transport.HttpTransportSE;
 
 final public class WebServiceCaller {
 
-    public static final String ip = "192.168.90.61";
+    public static final String ip = "192.168.251.61";
     private String response;
     private int responseCode;
     private SoapObject request;

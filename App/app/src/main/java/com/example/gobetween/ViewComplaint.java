@@ -21,7 +21,6 @@ public class ViewComplaint extends AppCompatActivity {
 
     RecyclerView recyclerView;
     String content[],type[],reply[];
-    ImageView backto;
     String id;
 
     @Override
@@ -30,14 +29,6 @@ public class ViewComplaint extends AppCompatActivity {
         setContentView(R.layout.activity_view_complaint);
 
         recyclerView=findViewById(R.id.recyclerview);
-        backto = findViewById(R.id.arrow);
-        backto.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i=new Intent(ViewComplaint.this, Settings.class);
-                startActivity(i);
-            }
-        });
         ViewComplaint.Viewcomplaint s = new ViewComplaint.Viewcomplaint();
         SharedPreferences sh=getSharedPreferences("user",MODE_PRIVATE);
         id=sh.getString("id","");

@@ -65,7 +65,7 @@
                         <td>
                             <select id="sel_type" name="sel_type" onchange="getSub(this.value)">
                                 <option value="">Select</option>
-                                <%                                    String selQry = "select * from tbl_vehicletype";
+                                <%  String selQry = "select * from tbl_vehicletype";
                                     ResultSet rs = con.selectCommand(selQry);
                                     while (rs.next()) {
                                 %>
@@ -105,7 +105,7 @@
                                     $.ajax({
                                         type: "POST",
                                         data: {tid : tid},
-                                        url: "../Assets/AjaxPages/AjaxVehicleSubType.jsp",
+                                        url: "../Assets/AjaxPages/AjaxvehicleSubType.jsp",
                                         success: function(result) {
                                             $("#sel_sub").html(result);
                                         }});

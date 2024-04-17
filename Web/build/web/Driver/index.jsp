@@ -104,28 +104,12 @@
                                     <a class="dropbtn" href="ViewProfile.jsp">Profile</a>
                                 </div>
                                 <div class="dropdown">
-                                <%
-                                    String selQry = "select * from tbl_driver_license where driver_id='" + session.getAttribute("did") + "'";
-                                    ResultSet rs = con.selectCommand(selQry);
-                                    if (rs.next()) {
-                                       
-                                %>
+                                
                                 <div class="dropdown">
                                     <a class="dropbtn" href="ViewLicence.jsp">License</a>
                                 </div>
-                                <%
-                                    }
-                                    else
-                                    {
-                                        %>
-                                <div class="dropdown">
-                                    <a class="dropbtn" href="License.jsp">License</a>
                                 </div>
-                                <%
-                                    }
-
-                                %>
-                            </div>
+                                
                             <div class="dropdown">
                                 <a class="dropbtn" href="javascript:void(0)">Trip</a>
                                 <div class="dropdown-content">

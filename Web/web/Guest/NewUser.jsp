@@ -150,7 +150,7 @@
                                 <div class="field">
                                     <label>Contact</label>
                                     <div class="control">
-                                        <input type="text" required="" class="input" name="txt_contact" placeholder="Enter contact number">
+                                        <input type="text" required="" class="input" name="txt_contact" maxlength="10" placeholder="Enter contact number">
                                     </div>
                                 </div>
                                 <div class="field">
@@ -211,13 +211,13 @@
                                 <div class="field">
                                     <label>Aadhar number</label>
                                     <div class="control">
-                                        <input type="text" required="" class="input" name="txt_anumber"  placeholder="Enter your Aadhar number">
+                                        <input type="text" required="" class="input" name="txt_anumber" maxlength="16"  placeholder="Enter your Aadhar number">
                                     </div>
                                 </div>
                                 <div class="field">
                                     <label>Email</label>
                                     <div class="control">
-                                        <input type="text" required="" class="input" name="txt_email"  placeholder="Enter your email address">
+                                        <input type="email" required="" class="input" name="txt_email"  placeholder="Enter your email address">
                                     </div>
                                 </div>
                                 <div class="field">

@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
@@ -13,12 +15,14 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.List;
 
@@ -31,8 +35,11 @@ public class EnquiryForm extends AppCompatActivity {
     ArrayAdapter<String> tostateAdapter;
     ArrayAdapter<String> todistrictAdapter;
     ArrayAdapter<String> tolocationAdapter;
-    DatePickerDialog datePickerDialog;
 
+    EditText pday,pmonth,pyear,dday,dmonth,dyear,description,quantity,pickupAddress,deliveryAddress;
+    String Pday,Pmonth,Pyear,Dday,Dmonth,Dyear,Hour,Minute,Meridiem,Description,Quantity,PickupAddress,DeliveryAddress,cid,plid,dlid;
+    String coid;
+    Button submitbutton;
     String districtId[], districtName[];
     String stateId[], stateName[];
     String locationId[], locationName[];
@@ -46,6 +53,17 @@ public class EnquiryForm extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_enquiry_form);
+        pday = findViewById(R.id.pday);
+        pmonth = findViewById(R.id.pmonth);
+        pyear = findViewById(R.id.pyear);
+        dday = findViewById(R.id.dday);
+        dmonth = findViewById(R.id.dmonth);
+        dyear = findViewById(R.id.dyear);
+        description = findViewById(R.id.description);
+        quantity = findViewById(R.id.quantity);
+        pickupAddress = findViewById(R.id.pickupAddress);
+        deliveryAddress = findViewById(R.id.deliveryAddress);
+
         spinnerState = findViewById(R.id.state);
         spinnerDistrict = findViewById(R.id.district);
         spinnerLocation = findViewById(R.id.location);
@@ -53,8 +71,9 @@ public class EnquiryForm extends AppCompatActivity {
         spinnertoState = findViewById(R.id.tostate);
         spinnertoDistrict = findViewById(R.id.todistrict);
         spinnertoLocation = findViewById(R.id.tolocation);
-//        pickupDate = findViewById(R.id.pickupDate);
-//        pickupDate.setText(getTodaysDate());
+        submitbutton = findViewById(R.id.submitbutton);
+        SharedPreferences sh = getSharedPreferences("user", MODE_PRIVATE);
+        String id = sh.getString("id", "");
         GetCategory category = new GetCategory();
         category.execute();
         GetState state = new GetState();
@@ -62,19 +81,81 @@ public class EnquiryForm extends AppCompatActivity {
         GettoState tostate = new GettoState();
         tostate.execute();
 
-        Spinner timeSpinner = findViewById(R.id.dtime);
+        Spinner hourSpinner = findViewById(R.id.hour);
 
-        List<String> timeList = new ArrayList<>();
-        for (int i = 0; i < 24; i++) {
-            for (int j = 0; j < 60; j+=15) {
-                String time = String.format("%02d:%02d", i, j);
-                timeList.add(time);
-            }
+        List<String> hourList = new ArrayList<>();
+        for (int i = 1; i <= 12; i++) {
+            String time = String.format("%02d", i);
+            hourList.add(time);
         }
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, timeList);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, hourList);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        timeSpinner.setAdapter(adapter);
+        hourSpinner.setAdapter(adapter);
+        Spinner minuteSpinner = findViewById(R.id.minute);
+
+        List<String> minuteList = new ArrayList<>();
+        for (int i = 0; i < 60; i += 1) {
+            String time = String.format("%02d", i);
+            minuteList.add(time);
+        }
+
+        ArrayAdapter<String> adapter2 = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, minuteList);
+        adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        minuteSpinner.setAdapter(adapter2);
+
+        Spinner meridiemSpinner = findViewById(R.id.meridiem);
+        List<String> meridiemList = new ArrayList<>();
+        meridiemList.add("AM");
+        meridiemList.add("PM");
+
+
+        ArrayAdapter<String> adapter3 = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, meridiemList);
+        adapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        meridiemSpinner.setAdapter(adapter3);
+
+        Intent intent = getIntent();
+        coid = intent.getStringExtra("coid");
+        submitbutton.setOnClickListener(new View.OnClickListener() {
+
+
+            @Override
+            public void onClick(View v) {
+                // Get the feedback message from the EditText
+                Pday = pday.getText().toString();
+                Pmonth= pmonth.getText().toString();
+                Pyear= pyear.getText().toString();
+                Dday= dday.getText().toString();
+                Dmonth= dmonth.getText().toString();
+                Dyear= dyear.getText().toString();
+                Description= description.getText().toString();
+                Quantity= quantity.getText().toString();
+                PickupAddress= pickupAddress.getText().toString();
+                DeliveryAddress= deliveryAddress.getText().toString();
+                int typePosition = spinnerLocation.getSelectedItemPosition();
+                plid = locationId[typePosition];
+                int typePosition1 = spinnertoLocation.getSelectedItemPosition();
+                dlid = tolocationId[typePosition1];
+                int typePosition2 = spinnerCategory.getSelectedItemPosition();
+                cid = categoryId[typePosition2];
+                int typePosition3 = hourSpinner.getSelectedItemPosition();
+                Hour= hourList.get(typePosition3);
+                int typePosition4 = minuteSpinner.getSelectedItemPosition();
+                Minute= minuteList.get(typePosition4);
+                int typePosition5 = meridiemSpinner.getSelectedItemPosition();
+                Meridiem= meridiemList.get(typePosition5);
+
+                if (!Pday.isEmpty()&&!Pmonth.isEmpty()&&!Pyear.isEmpty()&&!Dday.isEmpty()&&!Dmonth.isEmpty()&&!Dyear.isEmpty()&&!Hour.isEmpty()&&!Minute.isEmpty()&&!Description.isEmpty()&&!Quantity.isEmpty()&&!PickupAddress.isEmpty()&&!DeliveryAddress.isEmpty()&&!cid.isEmpty()&&!plid.isEmpty()&&!dlid.isEmpty()){
+                    EnQuiry enQuiry = new EnQuiry();
+                    enQuiry.execute(Pday,Pmonth,Pyear,Dday,Dmonth,Dyear,Hour,Minute,Description,Quantity,PickupAddress,DeliveryAddress,cid,plid,dlid,id,coid);
+                    Intent i = new Intent(EnquiryForm.this,Searchcompany.class);
+                    startActivity(i);
+                } else {
+                    Toast.makeText(EnquiryForm.this, "Please enter details", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
         spinnerState.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -189,6 +270,7 @@ public class EnquiryForm extends AppCompatActivity {
             }
         });
     }
+
     public class GetState extends AsyncTask<String, String, String> {
 
         @Override
@@ -450,6 +532,38 @@ public class EnquiryForm extends AppCompatActivity {
             tolocationAdapter = new ArrayAdapter<String>(EnquiryForm.this, android.R.layout.simple_spinner_item, tolocationName);
             tolocationAdapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
             spinnertoLocation.setAdapter(tolocationAdapter);
+        }
+    }
+    private class EnQuiry extends AsyncTask<String, Void, String> {
+        @Override
+        protected String doInBackground(String... strings) {
+            System.out.println("inside doInBackground"+ Arrays.toString(strings));
+            WebServiceCaller wb = new WebServiceCaller();
+            wb.setSoapObject("Enquiry");
+            wb.addProperty("Pday", strings[0]);
+            wb.addProperty("Pmonth", strings[1]);
+            wb.addProperty("Pyear", strings[2]);
+            wb.addProperty("Dday", strings[3]);
+            wb.addProperty("Dmonth", strings[4]);
+            wb.addProperty("Dyear", strings[5]);
+            wb.addProperty("Hour", strings[6]);
+            wb.addProperty("Minute", strings[7]);
+            wb.addProperty("Description", strings[8]);
+            wb.addProperty("Quantity", strings[9])
+            ;wb.addProperty("PickupAddress", strings[10]);
+            wb.addProperty("DeliveryAddress", strings[11]);
+            wb.addProperty("cid", strings[12]);
+            wb.addProperty("plid", strings[13]);
+            wb.addProperty("dlid", strings[14]);
+            wb.addProperty("id", strings[15]);
+            wb.addProperty("coid", strings[16]);
+            wb.callWebService();
+            return wb.getResponse();
+        }
+        @Override
+        protected void onPostExecute(String message) {
+            // Display a toast message with the submitted feedback
+            Toast.makeText(EnquiryForm.this, "Application submitted: ", Toast.LENGTH_SHORT).show();
         }
     }
 }

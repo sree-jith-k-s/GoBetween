@@ -9,20 +9,20 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="688dp"
+        android:layout_marginTop="10dp"
         android:orientation="vertical"
-        android:padding="16dp"
-        android:layout_marginTop="10dp">
+        android:padding="16dp">
 
         <TextView
             android:id="@+id/title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Payment Gateway"
             android:layout_gravity="center"
             android:background="@drawable/payment_edittext"
             android:fontFamily="@font/poppins_semibold"
             android:padding="10dp"
+            android:text="Payment Gateway"
             android:textColor="#7ed321"
             android:textSize="24sp"
             android:textStyle="bold" />
@@ -30,18 +30,17 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="10dp">
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
 
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Account"
                 android:fontFamily="@font/poppins_semibold"
+                android:text="Account"
                 android:textColor="#7ed321"
                 android:textSize="20sp" />
-
 
 
         </LinearLayout>
@@ -86,55 +85,58 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:orientation="horizontal"
-            android:layout_marginTop="20dp">
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal">
+
             <EditText
                 android:id="@+id/email"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:hint="Email"
-                android:paddingStart="3dp"
-                android:drawablePadding="8dp"
-                android:drawableLeft="@drawable/baseline_email_24"
                 android:background="@drawable/payment_edittext"
+                android:drawableLeft="@drawable/baseline_email_24"
+                android:drawablePadding="8dp"
                 android:fontFamily="@font/poppins_semibold"
-                android:inputType="textEmailAddress" />
+                android:hint="Email"
+                android:inputType="textEmailAddress"
+                android:paddingStart="3dp" />
 
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
             android:layout_marginTop="30dp"
-            android:layout_marginBottom="10dp">
+            android:layout_marginBottom="10dp"
+            android:orientation="horizontal">
 
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:fontFamily="@font/poppins_semibold"
                 android:text="Date of Birth"
                 android:textColor="@color/green"
-                android:textSize="20sp"
-                android:fontFamily="@font/poppins_semibold"/>
+                android:textSize="20sp" />
 
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
             android:layout_gravity="end"
             android:layout_marginTop="-40dp"
-            android:layout_marginEnd="50dp">
+            android:layout_marginEnd="50dp"
+            android:orientation="horizontal">
 
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:fontFamily="@font/poppins_semibold"
                 android:text="Gender"
                 android:textColor="@color/green"
-                android:textSize="20sp"
-                android:fontFamily="@font/poppins_semibold"/>
+                android:textSize="20sp" />
 
         </LinearLayout>
 
@@ -142,57 +144,58 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
+
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
                 android:orientation="horizontal">
 
-            <!-- Day -->
-            <EditText
-                android:id="@+id/day"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginTop="10dp"
-                android:layout_weight="1"
-                android:background="@drawable/payment_edittext"
-                android:hint="DD"
-                android:inputType="number"
-                android:maxLength="2"
-                android:maxLines="1"
-                android:layout_marginRight="5dp"
-                android:padding="8dp"
-                android:textAlignment="center" />
+                <!-- Day -->
+                <EditText
+                    android:id="@+id/day"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/payment_edittext"
+                    android:hint="DD"
+                    android:inputType="number"
+                    android:maxLength="2"
+                    android:maxLines="1"
+                    android:padding="8dp"
+                    android:textAlignment="center" />
 
-            <!-- Month -->
-            <EditText
-                android:id="@+id/month"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginTop="10dp"
-                android:layout_weight="1"
-                android:background="@drawable/payment_edittext"
-                android:hint="MM"
-                android:inputType="number"
-                android:maxLength="2"
-                android:maxLines="1"
-                android:layout_marginRight="5dp"
-                android:padding="8dp"
-                android:textAlignment="center" />
+                <!-- Month -->
+                <EditText
+                    android:id="@+id/month"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/payment_edittext"
+                    android:hint="MM"
+                    android:inputType="number"
+                    android:maxLength="2"
+                    android:maxLines="1"
+                    android:padding="8dp"
+                    android:textAlignment="center" />
 
-            <!-- Year -->
-            <EditText
-                android:id="@+id/year"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginTop="10dp"
-                android:layout_weight="1"
-                android:background="@drawable/payment_edittext"
-                android:hint="YYYY"
-                android:saveEnabled="false"
-                android:maxLength="4"
-                android:maxLines="1"
-                android:padding="8dp"
-                android:textAlignment="center" />
+                <!-- Year -->
+                <EditText
+                    android:id="@+id/year"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/payment_edittext"
+                    android:hint="YYYY"
+                    android:maxLength="4"
+                    android:maxLines="1"
+                    android:padding="8dp"
+                    android:saveEnabled="false"
+                    android:textAlignment="center" />
             </LinearLayout>
 
             <LinearLayout
@@ -201,6 +204,7 @@
                 android:orientation="horizontal">
 
                 <RadioGroup
+                    android:id="@+id/gender"
                     android:layout_width="172dp"
                     android:layout_height="60dp"
                     android:layout_gravity="end"
@@ -233,6 +237,7 @@
                 </RadioGroup>
             </LinearLayout>
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -242,15 +247,15 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:fontFamily="@font/poppins_semibold"
                 android:text="Payment Details"
                 android:textColor="#7ed321"
-                android:textSize="20sp"
-                android:fontFamily="@font/poppins_semibold"/>
+                android:textSize="20sp" />
 
         </LinearLayout>
 
         <RadioGroup
-            android:id="@+id/payment_method_group"
+            android:id="@+id/card"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
@@ -271,58 +276,62 @@
                 android:id="@+id/debit_card_radio"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/custom_right_radiobutton"
+                android:button="@android:color/transparent"
                 android:fontFamily="@font/poppins_semibold"
                 android:text="Debit Card"
-                android:textColor="@color/black"
                 android:textAlignment="center"
-                android:button="@android:color/transparent"
-                android:background="@drawable/custom_right_radiobutton"/>
+                android:textColor="@color/black" />
 
         </RadioGroup>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:orientation="horizontal"
-            android:layout_marginTop="10dp">
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
 
             <EditText
                 android:id="@+id/card_number"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:hint="Card Number"
-                android:drawableLeft="@drawable/baseline_credit_card_24"
                 android:background="@drawable/payment_edittext"
-                android:paddingStart="3dp"
+                android:drawableLeft="@drawable/baseline_credit_card_24"
                 android:drawablePadding="8dp"
                 android:fontFamily="@font/poppins_semibold"
-                android:inputType="number" />
+                android:hint="Card Number"
+                android:inputType="number"
+                android:maxLength="16"
+                android:paddingStart="3dp" />
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:orientation="horizontal"
-            android:layout_marginTop="20dp">
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal">
+
             <EditText
                 android:id="@+id/total_amount"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:hint="INR Total "
-                android:drawableLeft="@drawable/baseline_currency_rupee_24"
-                android:paddingStart="3dp"
-                android:drawablePadding="8dp"
                 android:background="@drawable/payment_edittext"
+                android:drawableLeft="@drawable/baseline_currency_rupee_24"
+                android:drawablePadding="8dp"
                 android:fontFamily="@font/poppins_semibold"
-                android:inputType="numberDecimal" />
+                android:hint="INR Total"
+                android:inputType="numberDecimal"
+                android:paddingStart="3dp" />
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:orientation="horizontal"
             android:layout_marginTop="20dp"
-            android:layout_marginBottom="20dp">
+            android:layout_marginBottom="20dp"
+            android:orientation="horizontal">
 
             <EditText
                 android:id="@+id/cvv"
@@ -332,32 +341,52 @@
                 android:layout_weight="1"
                 android:background="@drawable/payment_edittext"
                 android:drawableLeft="@drawable/cvv"
-                android:paddingStart="3dp"
                 android:drawablePadding="8dp"
                 android:fontFamily="@font/poppins_semibold"
                 android:hint="CVV"
-                android:inputType="number" />
+                android:inputType="number"
+                android:maxLength="3"
+                android:paddingStart="3dp" />
+
             <EditText
-                android:id="@+id/exp_date"
-                android:layout_width="wrap_content"
+                android:id="@+id/expmonth"
+                android:layout_width="33dp"
                 android:layout_height="match_parent"
+                android:layout_marginRight="5dp"
                 android:layout_weight="1"
-                android:paddingStart="3dp"
-                android:drawablePadding="8dp"
-                android:hint="EXP DATE"
-                android:drawableLeft="@drawable/baseline_edit_calendar_24"
                 android:background="@drawable/payment_edittext"
-                android:fontFamily="@font/poppins_semibold"
-                android:inputType="number" />
+                android:drawableLeft="@drawable/baseline_edit_calendar_24"
+                android:hint="MM"
+                android:inputType="number"
+                android:maxLength="2"
+                android:maxLines="1"
+                android:padding="8dp"
+                android:textAlignment="center" />
+
+            <!-- Month -->
+            <EditText
+                android:id="@+id/expyear"
+                android:layout_width="13dp"
+                android:layout_height="match_parent"
+                android:layout_marginRight="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/payment_edittext"
+                android:hint="YY"
+                android:inputType="number"
+                android:maxLength="2"
+                android:maxLines="1"
+                android:padding="8dp"
+                android:textAlignment="center" />
 
         </LinearLayout>
+
         <Button
             android:id="@+id/buttonpay"
-            android:layout_gravity="center"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:fontFamily="@font/poppins_semibold"
+            android:layout_gravity="center"
             android:backgroundTint="@color/green"
+            android:fontFamily="@font/poppins_semibold"
             android:text="PAY NOW" />
     </LinearLayout>
 </androidx.cardview.widget.CardView>

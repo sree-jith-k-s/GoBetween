@@ -44,8 +44,8 @@
                 <td><%=rs.getString("driver_address")%></td>
             </tr>
             <tr>
-                <td><a href="EditProfile.jsp">Edit Profile</a></td>
-                <td><a href="ChangePassword.jsp">Change Password</a></td>
+                <td><a href="Editprofile.jsp">Edit Profile</a></td>
+                <td><a href="Changepassword.jsp">Change Password</a></td>
             </tr>
             <%
                 }

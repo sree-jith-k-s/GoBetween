@@ -44,22 +44,22 @@ public class Changepassword extends AppCompatActivity {
                 cpass = cpassword.getText().toString();
                 npass = npassword.getText().toString();
                 repass = repassword.getText().toString();
-
-                if(DBPassword.equals(cpass))
-                {
-                    if (npass.equals(repass))
-                    {
-                        ChangePassword l = new ChangePassword();
-                        l.execute(id,npass);
+                if (!cpass.isEmpty() && !npass.isEmpty() && !repass.isEmpty()) {
+                    if (DBPassword.equals(cpass)) {
+                        if (npass.equals(repass)) {
+                            ChangePassword l = new ChangePassword();
+                            l.execute(id, npass);
+                        } else {
+                            Toast.makeText(Changepassword.this, "New Password Mismatched", Toast.LENGTH_SHORT).show();
+                        }
+                    } else {
+                        Toast.makeText(Changepassword.this, "Current Password Mismatched", Toast.LENGTH_SHORT).show();
                     }
-                    else {
-                        Toast.makeText(Changepassword.this, "New Password Mismatched", Toast.LENGTH_SHORT).show();
-                    }
-                }else {
-                    Toast.makeText(Changepassword.this, "Current Password Mismatched", Toast.LENGTH_SHORT).show();
                 }
-
-
+                else
+                {
+                    Toast.makeText(Changepassword.this, "Fill all fields", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }

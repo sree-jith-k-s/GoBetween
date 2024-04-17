@@ -120,49 +120,25 @@
                 String stime = value[2];
                 int a = Integer.parseInt(stime.substring(0, stime.length() - 6));
                 String b = stime.substring(4, stime.length());
-                String exp = String.valueOf(a + 20) + b ;
-                String bexp = String.valueOf(a + 5) + b ;
+                String exp = String.valueOf(a + 20) + b;
+                String bexp = String.valueOf(a + 5) + b;
 
-                String selQry = "select * from tbl_driver_license where driver_id='" + session.getAttribute("did") + "'";
+                String str1 = "insert into tbl_driver_license(driver_license_front_photo,driver_license_back_photo,driver_license_number,driver_license_class,driver_license_date,driver_license_exp_date,driver_license_badge_exp_date,driver_id)"
+                        + "values('" + fn + "','" + fm + "','" + value[0] + "','" + value[1] + "','" + value[2] + "','" + exp + "','" + bexp + "','" + value[3] + "')";
+                System.out.println();
+                boolean status = con.executeCommand(str1);
 
-                ResultSet rs = con.selectCommand(selQry);
-                if (rs.next()) {
-                    String del = "delete from tbl_driver_license where driver_id='" + session.getAttribute("did") + "'";
-                    System.out.println(del);
-                    if (con.executeCommand(del)) {
-                        String str2 = "insert into tbl_driver_license(driver_license_front_photo,driver_license_back_photo,driver_license_number,driver_license_class,driver_license_date,driver_license_exp_date,driver_license_badge_exp_date,driver_id)"
-                                + "values('" + fn + "','" + fm + "','" + value[0] + "','" + value[1] + "','" + value[2] + "','" + exp + "','" + bexp + "','" + session.getAttribute("did") + "')";
+                if (status == true) {
 
-                        boolean status1 = con.executeCommand(str2);
 
-                        if (status1 == true) {
-        %> 
-        <script type="text/javascript">
-            alert("Updated Successfully..");
-            setTimeout(function() {
-                window.location.href = '../../Driver/ViewLicence.jsp'
-            }, 20);
-        </script>
-        <%
-                }
-            }
-        } else {
-            String str1 = "insert into tbl_driver_license(driver_license_front_photo,driver_license_back_photo,driver_license_number,driver_license_class,driver_license_date,driver_license_exp_date,driver_license_badge_exp_date,driver_id)"
-                    + "values('" + fn + "','" + fm + "','" + value[0] + "','" + value[1] + "','" + value[2] + "','" + exp + "','" + bexp + "','" + session.getAttribute("did") + "')";
-            System.out.println();
-            boolean status = con.executeCommand(str1);
-
-            if (status == true) {
         %> 
         <script type="text/javascript">
             alert("Upload Successfully..");
             setTimeout(function() {
-                window.location.href = '../../Driver/ViewLicence.jsp'
+                window.location.href = '../../Guest/Login.jsp'
             }, 20);
         </script>
-        <%
-                    }
-                }
+        <%                }
 
             }
 

@@ -24,7 +24,7 @@ public class TrackRequest extends AppCompatActivity {
 
     String id,sid;
 
-    TextView deliveryDate,deliveryTime,name,vehicle,details,contact,toaddress,tolocation;
+    TextView deliveryDate,deliveryTime,name,vehicle,details,contact,toaddress,tolocation,lastlocation,updatedate;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +38,8 @@ public class TrackRequest extends AppCompatActivity {
         contact = findViewById(R.id.contact);
         toaddress = findViewById(R.id.toaddress);
         tolocation = findViewById(R.id.tolocation);
+        lastlocation = findViewById(R.id.location);
+        updatedate = findViewById(R.id.time);
 
 
         Intent intent = getIntent();
@@ -73,6 +75,8 @@ public class TrackRequest extends AppCompatActivity {
                 contact.setText(jo.getString("contact"));
                 toaddress.setText(jo.getString("toaddress"));
                 tolocation.setText(jo.getString("tolocation"));
+                lastlocation.setText(jo.getString("lastseen"));
+                updatedate.setText(jo.getString("lastdate"));
             } catch (JSONException e) {
                 e.printStackTrace();
             }

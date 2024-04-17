@@ -27,7 +27,14 @@
             }
         }
         if (request.getParameter("did") != null) {
+            
             String upQry = "update tbl_transport_shedule set transport_shedule_status='5' where transport_shedule_id='" + request.getParameter("did") + "'";
+            String upQry2 = "update tbl_company_driver set company_driver_status='0' where driver_id='" + request.getParameter("did1") + "'";
+            con.executeCommand(upQry2);
+             System.out.println(upQry2);
+             String upQry3 = "update tbl_company_driver set company_driver_status='0' where driver_id='" + request.getParameter("did2") + "'";
+            con.executeCommand(upQry3);
+             System.out.println(upQry3);
             if (con.executeCommand(upQry)) {
     %> 
     <script type="text/javascript">
@@ -103,7 +110,7 @@
                             <%
                             } else if (rs.getString("transport_shedule_status").equals("4")) {
                             %>
-                            <a href="AssignedTrip.jsp?did=<%=rs.getString("transport_shedule_id")%>">Delivered ?</a>
+                            <a href="AssignedTrip.jsp?did=<%=rs.getString("transport_shedule_id")%>&did1=<%=rs.getString("driver_id")%>&did2=<%=rs.getString("driver_id2")%>">Delivered ?</a>
                             <%
                                 } else  {
                                     out.println("Delivered..");

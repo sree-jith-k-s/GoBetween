@@ -21,7 +21,7 @@ import org.json.JSONObject;
 public class CompanyDetails extends AppCompatActivity {
     Button button1;
     TextView name,contact,email,address,location,since;
-    ImageView backto,logo;
+    ImageView logo;
 
     String id;
     @Override
@@ -36,19 +36,11 @@ public class CompanyDetails extends AppCompatActivity {
         address = findViewById(R.id.address);
         since=findViewById(R.id.since);
         logo = findViewById(R.id.logo);
-//        backto = findViewById(R.id.arrow);
-//        backto.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent i=new Intent(CompanyDetails.this, Searchcompany .class);
-//                startActivity(i);
-//            }
-//        });
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(CompanyDetails.this,EnquiryForm.class);
-                i.putExtra("id", id);
+                i.putExtra("coid", id);
                 startActivity(i);
             }
         });

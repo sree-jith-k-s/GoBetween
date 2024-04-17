@@ -40,18 +40,10 @@ public class Searchcompany extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_searchcompany);
-        backto = findViewById(R.id.arrow);
         recycleview1=findViewById(R.id.recycleview1);
         spinnerState = findViewById(R.id.state);
         spinnerDistrict = findViewById(R.id.district);
         spinnerLocation = findViewById(R.id.location);
-        backto.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i=new Intent(Searchcompany.this, Dashboard.class);
-                startActivity(i);
-            }
-        });
 
         GetState state = new GetState();
         state.execute();
@@ -250,7 +242,7 @@ public class Searchcompany extends AppCompatActivity {
         @Override
         protected void onPostExecute (String s){
             super.onPostExecute(s);
-            Toast.makeText(Searchcompany.this, s, Toast.LENGTH_SHORT).show();
+//            Toast.makeText(Searchcompany.this, s, Toast.LENGTH_SHORT).show();
             JSONArray j = null;
             try {
                 j = new JSONArray(s);
@@ -284,8 +276,5 @@ public class Searchcompany extends AppCompatActivity {
             recycleview1.setAdapter(searchAdapter);
             recycleview1.setLayoutManager(new LinearLayoutManager(Searchcompany.this));
         }
-
-
-
     }
 }

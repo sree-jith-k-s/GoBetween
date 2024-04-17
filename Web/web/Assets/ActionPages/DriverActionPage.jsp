@@ -124,11 +124,14 @@
                 boolean status = obj.executeCommand(InsQry);
 
                 if (status == true) {
+                    String sel = "select max(driver_id) as id from tbl_driver";
+                ResultSet rss = obj.selectCommand(sel);
+                rss.next();
         %> 
         <script type="text/javascript">
             alert("Upload Successfully..");
             setTimeout(function() {
-                window.location.href = '../../Guest/Driverregistration.jsp'
+                window.location.href = '../../Guest/Licence.jsp?id=<%=rss.getString("id")%>'
             }, 40);
         </script>
         <%

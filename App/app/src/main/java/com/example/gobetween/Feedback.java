@@ -18,13 +18,11 @@ import org.json.JSONObject;
 public class Feedback extends AppCompatActivity {
     EditText feedbackEditText;
     Button submitButton;
-ImageView backto;
 String feedbackMessage;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_feedback);
-        backto = findViewById(R.id.arrow);
 
         // Initialize views
         feedbackEditText = findViewById(R.id.feedback);
@@ -32,13 +30,6 @@ String feedbackMessage;
 
         SharedPreferences sh=getSharedPreferences("user",MODE_PRIVATE);
         String id=sh.getString("id","");
-        backto.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i=new Intent(Feedback.this, Settings.class);
-                startActivity(i);
-            }
-        });
 
         // Set click listener for the submit button
         submitButton.setOnClickListener(new View.OnClickListener() {

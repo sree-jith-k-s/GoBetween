@@ -17,12 +17,18 @@
     <%
         if (request.getParameter("btn_driv") != null) {
             String upW = "update tbl_transport_shedule set driver_id='" + request.getParameter("sel_driver") + "',driver_id2='" + request.getParameter("sel2_driver") + "',transport_shedule_status='3' where transport_shedule_id='" + request.getParameter("did") + "'";
-            if (con.executeCommand(upW)) {
+            String upQry = "update tbl_company_driver set company_driver_status='1' where driver_id='" + request.getParameter("sel_driver") + "'";
+                con.executeCommand(upQry);
+                System.out.println(upQry);
+                String upQry2 = "update tbl_company_driver set company_driver_status='1' where driver_id='" + request.getParameter("sel2_driver") + "'";
+                con.executeCommand(upQry2);
+                System.out.println(upQry2);
+                if (con.executeCommand(upW)) {
     %> 
     <script type="text/javascript">
         alert("Vehicle Assigned Succesfully");
         setTimeout(function() {
-            window.location.href = 'TransportRequest.jsp'
+            window.location.href = 'TransportRequest.jsp';
         }, 100);
     </script>
     <%
@@ -187,7 +193,7 @@
                                 <option value="">Select</option>
                                 <<%
 
-                                    String selQry2 = "select * from tbl_company_driver cd inner join tbl_driver d on d.driver_id=cd.driver_id where company_id='" + session.getAttribute("cid") + "'";
+                                    String selQry2 = "select * from tbl_company_driver cd inner join tbl_driver d on d.driver_id=cd.driver_id where company_id='" + session.getAttribute("cid") + "' and company_driver_status = 0 ";
                                     ResultSet rs1 = con.selectCommand(selQry2);
                                     while (rs1.next()) {
                                 %>
@@ -366,14 +372,14 @@
                                     var km = d;
                                     var id1 = document.getElementById("sel_vehicle").value;
                                     var id2 = document.getElementById("sel1_vehicle").value;
-                                    
-                                    if (id1 === "" && id2==="")
+
+                                    if (id1 === "" && id2 === "")
                                     {
-                                      
+
                                     }
                                     else if (km == "")
                                     {
-                                      
+
                                     }
                                     else if (id1 === "")
                                     {

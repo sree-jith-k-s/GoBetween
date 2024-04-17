@@ -121,13 +121,17 @@ public class UserRegistration extends AppCompatActivity {
                 password = upassword.getText().toString();
                 int typePosition = spinnerLocation.getSelectedItemPosition();
                 lid = locationId[typePosition];
-                if (!name.isEmpty()){
+
+                if (!name.isEmpty()&&!contact.isEmpty()&&!email.isEmpty()&&!aadhar.isEmpty()&&!day.isEmpty()&&!month.isEmpty()&&!year.isEmpty()&&!address.isEmpty()&&!password.isEmpty()) {
+                    // If not empty, submit the feedback
                     SignUp signUp = new SignUp();
                     signUp.execute(name,contact,email,aadhar,lid,day,month,year,password,address);
                 } else {
                     // If empty, display a toast message
                     Toast.makeText(UserRegistration.this, "Please enter your details", Toast.LENGTH_SHORT).show();
                 }
+                SignUp signUp = new SignUp();
+                signUp.execute(name,contact,email,aadhar,lid,day,month,year,password,address);
             }
         });
         }
@@ -255,7 +259,6 @@ public class UserRegistration extends AppCompatActivity {
             Toast.makeText(UserRegistration.this, "Application submitted: ", Toast.LENGTH_SHORT).show();
             Intent i = new Intent(UserRegistration.this,Login.class);
             startActivity(i);
-            execute(message);
         }
     }
 }

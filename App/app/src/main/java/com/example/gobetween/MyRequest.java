@@ -19,7 +19,6 @@ import org.json.JSONObject;
 public class MyRequest extends AppCompatActivity {
 
     RecyclerView recycleview1;
-    ImageView backto;
     String company[],logo[],logourl[],time[],requestId[];
     String id;
 
@@ -27,20 +26,11 @@ public class MyRequest extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_request);
-        backto = findViewById(R.id.arrow);
         recycleview1=findViewById(R.id.recycleview1);
         MyRequest.Myrequest s = new MyRequest.Myrequest();
         SharedPreferences sh=getSharedPreferences("user",MODE_PRIVATE);
         id=sh.getString("id","");
         s.execute(id);
-        backto.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i=new Intent(MyRequest.this, Dashboard.class);
-                startActivity(i);
-            }
-        });
-
     }
     public class Myrequest extends AsyncTask<String, String, String> {
 

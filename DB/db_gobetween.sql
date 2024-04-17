@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 19, 2024 at 01:27 PM
+-- Generation Time: Apr 17, 2024 at 10:10 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.5
 
@@ -29,6 +29,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `tbl_admin` (
   `admin_id` int(10) UNSIGNED NOT NULL,
+  `admin_name` varchar(50) NOT NULL,
   `admin_email` varchar(50) DEFAULT NULL,
   `admin_password` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -37,8 +38,8 @@ CREATE TABLE `tbl_admin` (
 -- Dumping data for table `tbl_admin`
 --
 
-INSERT INTO `tbl_admin` (`admin_id`, `admin_email`, `admin_password`) VALUES
-(1, 'admin@gmail.com', 'Admin@123');
+INSERT INTO `tbl_admin` (`admin_id`, `admin_name`, `admin_email`, `admin_password`) VALUES
+(1, 'Admin', 'admin@gmail.com', 'Admin@123');
 
 -- --------------------------------------------------------
 
@@ -90,7 +91,9 @@ CREATE TABLE `tbl_company` (
 
 INSERT INTO `tbl_company` (`company_id`, `company_name`, `company_contact`, `company_email`, `company_address`, `company_doj`, `company_since`, `company_proof`, `company_logo`, `location_id`, `owner_name`, `owner_email`, `owner_contact`, `owner_password`, `company_status`) VALUES
 (8, 'Global Share', '9783456713', 'globalshare@gmail.com', 'KKP Building 2nd street Gandhinagar', '2024-03-19', '1998-12-25', 'proof_1816.jpg', 'logo_1690.jpg', 9, 'Rakesh Nair', 'rakesh@gmail.com', '8756433214', 'Global@123', 1),
-(9, 'Delivery.co', '9783456713', 'deliveryco@gmail.com', 'RKP Road 3rd Building ', '2024-03-19', '1995-08-15', 'proof_1016.jpg', 'logo_1881.png', 10, 'Akhilesh P', 'akhilesh@gmail.com', '8756433214', 'Deliveryco@123', 1);
+(9, 'Delivery.co', '9783456713', 'deliveryco@gmail.com', 'RKP Road 3rd Building ', '2024-03-19', '1995-08-15', 'proof_1016.jpg', 'logo_1881.png', 10, 'Akhilesh P', 'akhilesh@gmail.com', '8756433214', 'Deliveryco@123', 1),
+(10, 'Co.delhivery', '8956453276', 'codelhivery@gmail.com', 'CK Building ', '2024-04-09', '2000-03-23', 'proof_1671.jpg', 'logo_1406.jpeg', 11, 'Rahul Ravi', 'rahulravi@gmail.com', '7988532467', 'Rahul@123', 1),
+(11, 'DHL', '9087908584', 'dhl@gmail.com', 'City Mall Buliding', '2024-04-09', '2003-02-27', 'proof_1778.jpg', 'logo_1867.png', 12, 'Warner James', 'warnerjames@gmail.com', '8028774530', 'Warner@123', 1);
 
 -- --------------------------------------------------------
 
@@ -111,8 +114,7 @@ CREATE TABLE `tbl_company_driver` (
 --
 
 INSERT INTO `tbl_company_driver` (`company_driver_id`, `company_id`, `driver_id`, `company_driver_status`, `company_driver_date`) VALUES
-(9, 8, 9, 0, '2024-03-19'),
-(10, 8, 10, 0, '2024-03-19');
+(11, 8, 21, 0, '2024-04-17');
 
 -- --------------------------------------------------------
 
@@ -138,9 +140,14 @@ CREATE TABLE `tbl_complaint` (
 --
 
 INSERT INTO `tbl_complaint` (`complaint_id`, `complaint_content`, `complainttype_id`, `complaint_date`, `complaint_status`, `complaint_reply`, `user_id`, `company_id`, `driver_id`, `complaint_reply_date`) VALUES
-(10, 'bad behavior ', 16, '2024-03-19', 1, 'sorry for the inconvenience', 5, 0, 0, '2024-03-19'),
-(11, 'The parcel was damaged', 7, '2024-03-19', 0, '0', 5, 0, 0, '0'),
-(12, 'delivery not at time', 10, '2024-03-19', 0, '0', 5, 0, 0, '0');
+(11, 'The parcel was damaged', 7, '2024-03-19', 1, 'sorry for the inconvenience', 5, 0, 0, '2024-04-17'),
+(12, 'delivery not at time', 10, '2024-03-19', 1, 'sorry sir', 5, 0, 0, '2024-04-17'),
+(14, 'bad experience ', 16, '2024-04-09', 0, '0', 5, 0, 0, '0'),
+(15, 'bad company', 14, '2024-04-09', 0, '0', 5, 0, 0, '0'),
+(17, 'Bad behaviour', 13, '2024-04-10', 0, '0', 5, 0, 0, '0'),
+(18, 'driver didn\'t wait', 13, '2024-04-10', 1, 'We will check', 5, 0, 0, '2024-04-17'),
+(19, 'Making fun by requesting', 15, '2024-04-18', 0, '0', 0, 8, 0, '0'),
+(20, 'company is not supporting\r\n', 14, '2024-04-18', 0, '0', 0, 0, 21, '0');
 
 -- --------------------------------------------------------
 
@@ -199,7 +206,11 @@ INSERT INTO `tbl_district` (`district_id`, `district_name`, `state_id`) VALUES
 (29, 'Kozhikode', 22),
 (30, 'Wayanad', 22),
 (31, 'Kannur', 22),
-(32, 'Kasaragod', 22);
+(32, 'Kasaragod', 22),
+(33, 'Ariyalur', 33),
+(34, 'Chennai', 33),
+(35, 'Coimbatore', 33),
+(36, 'Cuddalore', 33);
 
 -- --------------------------------------------------------
 
@@ -229,8 +240,8 @@ CREATE TABLE `tbl_driver` (
 --
 
 INSERT INTO `tbl_driver` (`driver_id`, `driver_name`, `driver_primary_contact`, `driver_secondary_contact`, `driver_email`, `driver_proof`, `driver_photo`, `driver_dob`, `driver_doj`, `driver_password`, `driver_address`, `driver_expirence`, `location_id`, `driver_status`) VALUES
-(9, 'Krishna S', '8756096734', '9056872358', 'krishna@gmail.com', 'proof_1309.jpg', 'photo_1769.jpg', '1999-04-23', '2024-03-19', 'Krishna@123', 'thekkedathu', '2years at an export company as driver', 9, 1),
-(10, 'Ramesh P', '8756096734', '9056872358', 'ramesh@gmail.com', 'proof_1568.jpg', 'photo_1843.jpg', '2000-09-16', '2024-03-19', 'Ramesh@123', 'thazhathe', '2years at an export company as assistant driver', 10, 1);
+(21, 'Vishnu P', '8756096734', '9056872358', 'vishnu@gmail.com', 'proof_1105.jpg', 'photo_1067.jpg', '2004-04-16', '2024-04-17', 'Vishnu@123', 'Thekkedathu', '2years at an export company as driver', 12, 1),
+(22, 'Krishna S', '8756096734', '9056872358', 'krishna@gmail.com', 'proof_1721.jpg', 'photo_1678.jpg', '2004-04-02', '2024-04-18', 'Krishna@123', 'Kottackal', '2years at an export company as assistant driver', 20, 1);
 
 -- --------------------------------------------------------
 
@@ -255,7 +266,8 @@ CREATE TABLE `tbl_driver_license` (
 --
 
 INSERT INTO `tbl_driver_license` (`driver_license_front_photo`, `driver_license_back_photo`, `driver_license_date`, `driver_license_exp_date`, `driver_license_badge_exp_date`, `driver_license_class`, `driver_license_number`, `driver_license_id`, `driver_id`) VALUES
-('front_1648.jpg', 'back_1702.jpg', '2005-04-21', '2025-04-21', '2010-04-21', 'C1', '12345678900', 13, 9);
+('front_1562.jpg', 'back_1246.jpg', '2024-04-04', '2044-04-04', '2029-04-04', 'C1', 'KL31759013630238', 14, 21),
+('front_1800.jpg', 'back_1504.jpg', '2024-04-03', '2044-04-03', '2029-04-03', 'HWV', 'KL28567834610936', 15, 22);
 
 -- --------------------------------------------------------
 
@@ -276,8 +288,7 @@ CREATE TABLE `tbl_driver_request` (
 --
 
 INSERT INTO `tbl_driver_request` (`request_id`, `request_date`, `request_status`, `company_id`, `driver_id`) VALUES
-(17, '2024-03-19', 'Accepted', 8, 9),
-(18, '2024-03-19', 'Accepted', 8, 10);
+(19, '2024-04-17', 'Accepted', 8, 21);
 
 -- --------------------------------------------------------
 
@@ -299,7 +310,9 @@ CREATE TABLE `tbl_feedback` (
 --
 
 INSERT INTO `tbl_feedback` (`feedback_id`, `feedback_content`, `feedback_date`, `user_id`, `company_id`, `driver_id`) VALUES
-(1, 'good application ', '2024-03-19', 5, 0, 0);
+(1, 'good application ', '2024-03-19', 5, 0, 0),
+(2, 'not good', '2024-04-09', 5, 0, 0),
+(3, 'not good', '2024-04-09', 5, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -324,7 +337,17 @@ INSERT INTO `tbl_location` (`location_id`, `location_name`, `location_longitude`
 (9, 'Chirayinkeezhu', '76.7832° E', '8.6559° N', '695304', 19),
 (10, 'Thiruvalla', '76.5750° E', '9.3853° N', '689101', 22),
 (11, 'Changanassery', '76.5402° E', '9.4465° N', '686101', 23),
-(12, 'Muvattupuzha', '76.5790° E', '9.9894° N', '686661', 25);
+(12, 'Muvattupuzha', '76.5790° E', '9.9894° N', '686661', 25),
+(13, 'Neyyattinkara', '77.0866° E', ' 8.4019° N', '695121', 19),
+(14, 'Attingal', '76.8154° E', '8.6921° N', '695101', 19),
+(15, 'Varkala', '76.7064° E', '8.7350° N', '695141', 19),
+(16, 'Nedumangad', '77.0018° E', '8.6031° N', '695541', 19),
+(17, 'Punalur', '76.9324° E', '9.0116° N', '691305', 20),
+(18, 'Kottarakkara', ' 76.7714° E', '9.0000° N', '691506', 20),
+(19, 'Kundara', '76.5669° E', '9.0634° N', '691501', 20),
+(20, 'Adoor', '76.7075° E', ' 9.1875° N', '691523', 22),
+(21, 'Pandalam', '76.7012° E', '9.2649° N', '689501', 22),
+(22, 'Chengannur', '76.6238° E', ' 9.3194° N', '689121', 21);
 
 -- --------------------------------------------------------
 
@@ -392,17 +415,20 @@ CREATE TABLE `tbl_transport_request` (
   `category_id` int(10) UNSIGNED NOT NULL,
   `delivery_time` varchar(50) NOT NULL,
   `delivery_date` varchar(50) NOT NULL,
-  `transport_request_time` varchar(30) NOT NULL
+  `transport_request_time` varchar(50) NOT NULL,
+  `delivery_address` varchar(200) NOT NULL,
+  `pickup_address` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `tbl_transport_request`
 --
 
-INSERT INTO `tbl_transport_request` (`transport_request_id`, `transport_request_description`, `transport_request_date`, `transport_request_qty`, `transport_request_for_date`, `transport_request_status`, `user_id`, `from_location_id`, `to_location_id`, `transport_request_reply`, `company_id`, `category_id`, `delivery_time`, `delivery_date`, `transport_request_time`) VALUES
-(16, '100 chairs and tables', '2024-03-19', '100', '2024-03-21', 3, 5, 9, 10, 'Please Contact With us', 8, 3, '10:00', '2024-03-22', '15:23:40'),
-(17, '10 boxes of apple', '2024-03-19', '10 box', '2024-03-23', 3, 5, 11, 9, 'Please Contact With us', 8, 4, '12:00', '2024-03-24', '15:44:01'),
-(18, '10 boxes of switch and other electrical items', '2024-03-19', '25', '2024-03-25', 3, 5, 10, 9, 'Please Contact With us', 8, 5, '13:00', '2024-03-26', '15:49:48');
+INSERT INTO `tbl_transport_request` (`transport_request_id`, `transport_request_description`, `transport_request_date`, `transport_request_qty`, `transport_request_for_date`, `transport_request_status`, `user_id`, `from_location_id`, `to_location_id`, `transport_request_reply`, `company_id`, `category_id`, `delivery_time`, `delivery_date`, `transport_request_time`, `delivery_address`, `pickup_address`) VALUES
+(24, '100 box of switches', '2024-04-09', '100', '2024-04-10', 3, 5, 12, 9, 'Please Contact With us', 8, 3, '10:00', '2024-04-11', '13:09:59', 'Palackal Building', 'OET Building'),
+(26, '50 boxes of wires', '2024-04-09', '50', '2024-04-11', 3, 5, 12, 9, 'Please Contact With us', 8, 3, '10:00', '2024-04-12', '18:45:27', 'Bismi Building ', 'RKP Building'),
+(27, '40 sack of cement', '2024-04-09', '40', '2024-04-11', 3, 5, 10, 9, 'Please Contact With us', 8, 4, '11:00', '2024-04-12', '18:50:03', 'vadakkedathu house', 'Ramco cement Shop'),
+(32, '150 Box of Grapes', '2024-04-16', '150', '2024-04-12', 0, 5, 11, 12, 'Pending', 8, 4, '10:00', '2024-04-14', '00:30:27', 'Fruto Fruit shop', 'All in Fruit shop');
 
 -- --------------------------------------------------------
 
@@ -426,9 +452,11 @@ CREATE TABLE `tbl_transport_shedule` (
 --
 
 INSERT INTO `tbl_transport_shedule` (`transport_shedule_id`, `transport_shedule_date`, `transport_request_id`, `transport_shedule_status`, `driver_id`, `driver_id2`, `vehicle_id`, `transport_amount`) VALUES
-(16, '2024-03-19', 16, 6, 9, 10, 7, 11500),
-(17, '2024-03-19', 17, 4, 9, 10, 7, 12500),
-(18, '2024-03-19', 18, 0, 0, 0, 7, 11500);
+(23, '2024-04-09', 24, 6, 21, 22, 7, 11500),
+(24, '2024-04-09', 27, 6, 21, 22, 7, 11500),
+(25, '2024-04-12', 26, 3, 21, 22, 7, 11500),
+(26, '2024-04-12', 28, 2, 21, 22, 7, 11500),
+(27, '2024-04-14', 31, 0, 0, 0, 7, 11500);
 
 -- --------------------------------------------------------
 
@@ -443,6 +471,13 @@ CREATE TABLE `tbl_transport_update` (
   `transport_update_status` int(10) UNSIGNED NOT NULL DEFAULT 0,
   `transport_shedule_id` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tbl_transport_update`
+--
+
+INSERT INTO `tbl_transport_update` (`transport_update_id`, `transport_update_datetime`, `transport_update_location`, `transport_update_status`, `transport_shedule_id`) VALUES
+(1, '2024-04-14 12:09:27', '10', 1, 24);
 
 -- --------------------------------------------------------
 
@@ -469,7 +504,8 @@ CREATE TABLE `tbl_user` (
 --
 
 INSERT INTO `tbl_user` (`user_id`, `user_name`, `user_contact`, `user_dob`, `user_doj`, `user_address`, `user_password`, `user_aadhar_number`, `user_email`, `user_status`, `location_id`) VALUES
-(5, 'Raju', '9834657842', '1995-03-30', '2024-03-19', 'vadakkedathu house', 'Raju@123', '18093792781028', 'raju@gmail.com', 1, 10);
+(5, 'Raju ravi', '9834657842', '1995-03-30', '2024-03-19', 'vadakkedathu house', 'Raju@123', '1809379278102835', 'raju@gmail.com', 1, 10),
+(11, 'Ram Kumar', '9866704513', '1996-06-21', '2024-04-17', 'Palathara House', 'Ram@123', '1800786624653412', 'ram@gmail.com', 1, 11);
 
 -- --------------------------------------------------------
 
@@ -496,7 +532,8 @@ CREATE TABLE `tbl_vehicle` (
 --
 
 INSERT INTO `tbl_vehicle` (`vehicle_id`, `vehicle_chase_no`, `vehicle_reg_no`, `vehicle_insurance_date`, `vehicle_insurance_exp`, `vehicle_status`, `vehiclesubtype_id`, `company_id`, `vehicle_detailes`, `vehicle_name`, `vehicle_amount`) VALUES
-(7, '1234567890', 'Kl03D4576', '2024-03-14', '2025-03-14', 0, 9, 8, 'white color truck with black bumber', 'Kripa', '11500');
+(7, 'MA3EYD32S007004AN', 'Kl03D4576', '2024-03-14', '2025-03-14', 0, 9, 8, 'white color truck with black bumber', 'Kripa', '11500'),
+(8, 'SV30-0169266', 'Kl33D4278', '2024-08-16', '2025-08-15', 0, 11, 8, 'Green color Truck', 'Hampi', '1000');
 
 -- --------------------------------------------------------
 
@@ -517,7 +554,8 @@ CREATE TABLE `tbl_vehiclesubtype` (
 INSERT INTO `tbl_vehiclesubtype` (`vehiclesubtype_id`, `vehiclesubtype_name`, `vehicletype_id`) VALUES
 (8, 'Isuzu NPR', 6),
 (9, 'Ford F-750', 6),
-(10, 'Chevrolet Silverado 3500HD', 6);
+(10, 'Chevrolet Silverado 3500HD', 6),
+(11, 'Full-Freezer Van', 7);
 
 -- --------------------------------------------------------
 
@@ -688,19 +726,19 @@ ALTER TABLE `tbl_category`
 -- AUTO_INCREMENT for table `tbl_company`
 --
 ALTER TABLE `tbl_company`
-  MODIFY `company_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `company_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `tbl_company_driver`
 --
 ALTER TABLE `tbl_company_driver`
-  MODIFY `company_driver_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `company_driver_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `tbl_complaint`
 --
 ALTER TABLE `tbl_complaint`
-  MODIFY `complaint_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `complaint_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `tbl_complainttype`
@@ -712,37 +750,37 @@ ALTER TABLE `tbl_complainttype`
 -- AUTO_INCREMENT for table `tbl_district`
 --
 ALTER TABLE `tbl_district`
-  MODIFY `district_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `district_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT for table `tbl_driver`
 --
 ALTER TABLE `tbl_driver`
-  MODIFY `driver_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `driver_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `tbl_driver_license`
 --
 ALTER TABLE `tbl_driver_license`
-  MODIFY `driver_license_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `driver_license_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `tbl_driver_request`
 --
 ALTER TABLE `tbl_driver_request`
-  MODIFY `request_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `request_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `tbl_feedback`
 --
 ALTER TABLE `tbl_feedback`
-  MODIFY `feedback_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `feedback_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `tbl_location`
 --
 ALTER TABLE `tbl_location`
-  MODIFY `location_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `location_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `tbl_state`
@@ -754,37 +792,37 @@ ALTER TABLE `tbl_state`
 -- AUTO_INCREMENT for table `tbl_transport_request`
 --
 ALTER TABLE `tbl_transport_request`
-  MODIFY `transport_request_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `transport_request_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT for table `tbl_transport_shedule`
 --
 ALTER TABLE `tbl_transport_shedule`
-  MODIFY `transport_shedule_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `transport_shedule_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `tbl_transport_update`
 --
 ALTER TABLE `tbl_transport_update`
-  MODIFY `transport_update_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `transport_update_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `tbl_user`
 --
 ALTER TABLE `tbl_user`
-  MODIFY `user_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `user_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `tbl_vehicle`
 --
 ALTER TABLE `tbl_vehicle`
-  MODIFY `vehicle_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `vehicle_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `tbl_vehiclesubtype`
 --
 ALTER TABLE `tbl_vehiclesubtype`
-  MODIFY `vehiclesubtype_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `vehiclesubtype_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `tbl_vehicletype`

@@ -144,13 +144,13 @@
                                 <div class="field">
                                     <label>Primary Contact</label>
                                     <div class="control">
-                                        <input type="text" required="" class="input" name="txt_pcontact" placeholder="Enter primary contact">
+                                        <input type="text" required="" class="input" name="txt_pcontact" maxlength="10" placeholder="Enter primary contact">
                                     </div>
                                 </div>
                                  <div class="field">
                                     <label>Secondary Contact</label>
                                     <div class="control">
-                                        <input type="text" required="" class="input" name="txt_scontact" placeholder="Enter secondary contact">
+                                        <input type="text" required="" class="input" name="txt_scontact" maxlength="10" placeholder="Enter secondary contact">
                                     </div>
                                 </div>
                                 <div class="field">

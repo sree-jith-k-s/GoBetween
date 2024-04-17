@@ -25,21 +25,13 @@
                 android:orientation="vertical"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
-                <ImageView
-                    android:id="@+id/arrow"
-                    android:layout_width="35dp"
-                    android:layout_height="47dp"
-                    android:layout_gravity="start|center_vertical|center"
-                    android:layout_marginTop="15dp"
-                    android:src="@drawable/baseline_arrow_back_24" />
-
                 <TextView
                     android:id="@+id/textView3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center|top"
                     android:layout_marginBottom="20dp"
-                    android:layout_marginTop="-45dp"
+                    android:layout_marginTop="5dp"
                     android:gravity="center|top"
                     android:text="Search Company"
                     android:textAlignment="center"

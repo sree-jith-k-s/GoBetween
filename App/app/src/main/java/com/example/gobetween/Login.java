@@ -51,14 +51,6 @@ public class Login extends AppCompatActivity {
             }
         });
     }
-//    public void onBackPressed() {
-//        Intent intent = new Intent(Login.this, Login.class);
-//        startActivity(intent);
-////        Toast.makeText(Login.this, "Logout to exit", Toast.LENGTH_SHORT).show();
-//        // Disable back button functionality
-//        // Or you can leave this empty to do nothing when back button is pressed
-//        super.onBackPressed();
-//    }
 
     public class LoginDetails extends AsyncTask<String, String, String> {
 
@@ -76,7 +68,7 @@ public class Login extends AppCompatActivity {
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
-            Toast.makeText(Login.this, s, Toast.LENGTH_SHORT).show();
+//            Toast.makeText(Login.this, s, Toast.LENGTH_SHORT).show();
             if (!s.equals("[]")) {
                 JSONArray j = null;
                 try {
@@ -85,7 +77,7 @@ public class Login extends AppCompatActivity {
                     id = jo.getString("id");
                     name = jo.getString("name");
 
-                    Toast.makeText(Login.this, "success", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Login.this, "Welcome Back", Toast.LENGTH_SHORT).show();
 
 
                     SharedPreferences.Editor sh = getSharedPreferences("user", MODE_PRIVATE).edit();
@@ -97,7 +89,7 @@ public class Login extends AppCompatActivity {
                     e.printStackTrace();
                 }
 
-                Intent i=new Intent(Login.this, Dashboard.class);
+                Intent i = new Intent(Login.this, Dashboard.class);
                 startActivity(i);
 
 
@@ -106,7 +98,16 @@ public class Login extends AppCompatActivity {
 
             }
         }
-
-
     }
+    @Override
+    public void onBackPressed() {
+        // Close the app when back button is pressed from LoginActivity
+        Intent intent = new Intent(Intent.ACTION_MAIN);
+        intent.addCategory(Intent.CATEGORY_HOME);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+        finish();
+        super.onBackPressed();// Optional - Finish the LoginActivity
+    }
+
 }

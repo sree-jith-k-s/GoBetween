@@ -21,7 +21,6 @@ import org.json.JSONObject;
 public class Editprofile extends AppCompatActivity {
     Button button1;
     EditText name,contact,email,address,aadhar,day,month,year;
-    ImageView backto;
 
     String id,uname,ucontact,uemail,uaddress,uaadhar,uday,umonth,uyear;
     @Override
@@ -37,16 +36,8 @@ public class Editprofile extends AppCompatActivity {
         day=findViewById(R.id.day);
         month=findViewById(R.id.month);
         year=findViewById(R.id.year);
-        backto = findViewById(R.id.arrow);
         SharedPreferences sh=getSharedPreferences("user",MODE_PRIVATE);
         id=sh.getString("id","");
-        backto.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i=new Intent(Editprofile.this, Myprofile .class);
-                startActivity(i);
-            }
-        });
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

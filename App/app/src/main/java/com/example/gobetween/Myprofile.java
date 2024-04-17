@@ -20,7 +20,7 @@ import org.json.JSONObject;
 public class Myprofile extends AppCompatActivity {
         Button button1;
         TextView name,pchange,contact,email,address,aadhar,dob;
-    ImageView backto;
+
 
         String id;
     @Override
@@ -35,14 +35,8 @@ public class Myprofile extends AppCompatActivity {
         address = findViewById(R.id.address);
         aadhar = findViewById(R.id.aadhar);
         dob=findViewById(R.id.dob);
-        backto = findViewById(R.id.arrow);
-        backto.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i=new Intent(Myprofile.this, Dashboard .class);
-                startActivity(i);
-            }
-        });
+
+
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -108,7 +102,16 @@ public class Myprofile extends AppCompatActivity {
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
-//                }
             }
+        }
+        @Override
+        public void onBackPressed() {
+        // Create an intent to navigate to the target activity
+        Intent intent = new Intent(this, Dashboard.class);
+        // Add flags to clear the activity stack up to the target activity
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+        startActivity(intent); // Start the target activity
+        finish();
+        super.onBackPressed();// Finish the current payment activity
     }
 }
